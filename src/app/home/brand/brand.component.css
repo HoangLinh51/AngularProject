@@ -1,0 +1,15 @@
+img {
+  list-style: none;
+  height: auto;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 250px;
+  text-align: center;
+}
+
+.brand-list {
+  padding-top: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

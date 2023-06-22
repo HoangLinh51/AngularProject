@@ -1,0 +1,19 @@
+<app-title></app-title>
+<!-- <app-categories *ngFor="let product of category"></app-categories> -->
+<div class="single-product-area">
+  <div class="zigzag-bottom"></div>
+  <div class="container">
+    <div class="row" >
+      <!-- <app-product *ngFor="let product of datas" ></app-product> -->
+      <app-product *ngFor="let product of datas | paginate: {currentPage: pagination, itemsPerPage: 12, totalItems: allProduct}
+       " [product]="product" ></app-product>
+</div>
+<div class="d-flex justify-content-center">
+  <pagination-controls (pageChange)="renderPage($event)"></pagination-controls>
+</div>
+  </div>
+</div>
+<!-- [product]="product -->
+<!-- [productList]="product.price" -->
+<!-- [product]="currentProduct" -->
+<!-- | paginate : currentPage: pagination, -->
