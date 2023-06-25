@@ -9,25 +9,46 @@
     </div>
   </div>
 </div>
-<!-- <div class="main-w3layouts wrapper"> -->
-  <div class="main-agileinfo">
-    <div class="agileits-top">
-      <form action="#" method="post">
-        <form action="register-form">
-          <input class="text" type="text" name="Username" placeholder="Username" required="">
-          <input class="text email" type="email" name="email" placeholder="Email" required="">
-          <input class="text" type="password" name="password" placeholder="Password" required="">
-          <input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
-          <div class="wthree-text">
-            <label class="anim">
-              <input type="checkbox" class="checkbox" required=""> <span>I Agree To The Terms & Conditions</span>
-            </label>
-            <div class="clear"> </div>
-          </div>
-          <input type="submit" value="Sign Up">
-        </form>
+
+<div class="main-agileinfo">
+  <div class="agileits-top">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input type="text" formControlName="firstName" class="form-control"
+        [ngClass]="{'is-invalid': submitted && f.firstName.errors }" placeholder="Firstname">
+      <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+      </div>
+      <br>
+      <input type="text" formControlName="lastName" class="form-control"
+        [ngClass]="{'is-invalid': submitted && f.lastName.errors }" placeholder="LastName">
+      <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+      </div>
+      <br>
+      <input type="text" formControlName="username" class="form-control"
+        [ngClass]="{'is-invalid': submitted && f.username.errors }" placeholder="Username">
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+        <br>
+        <input type="password" formControlName="password" class="form-control"
+          [ngClass]="{'is-invalid': submitted && f.password.errors }" placeholder="Password">
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+          <div *ngIf="f.password.errors['minLength']">Password must be at least 6 characters</div>
+        </div>
+        <br>
+        <div class="wthree-text">
+          <label class="anim">
+            <input type="checkbox" class="checkbox"> <span>I Agree To The Terms & Conditions</span>
+          </label>
+          <div class="clear"> </div>
+        </div>
+        <button type="submit" [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+          Register
+        </button>
         <p>Don't have an Account? <a [routerLink]="['/signin']"> Login Now!</a></p>
       </form>
-    </div>
   </div>
-<!-- </div> -->
+</div>

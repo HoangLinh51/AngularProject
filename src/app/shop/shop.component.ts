@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable, of, delay, throwError } from 'rxjs';
-import { ICategory } from './category.model';
 // import { CategoryService } from './category.service';
-import { IProductList, Product } from './product.model';
-import { ProductService } from './product.service';
+import { IProductList, Product } from '../product.model';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-shop',
@@ -12,10 +11,9 @@ import { ProductService } from './product.service';
 })
 export class ShopComponent {
   allProduct: number = 0;
-  pagination: number = 1;
+  pagination: number = 0;
   // datas: any;
   datas: Product[] = [];
-  category: ICategory[] = [];
 
   constructor(
     private productService: ProductService // private categoryService: CategoryService

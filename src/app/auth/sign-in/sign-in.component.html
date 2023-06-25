@@ -10,17 +10,27 @@
   </div>
 </div>
 <!-- <div class="main-w3layouts wrapper"> -->
-  <div class="main-agileinfo">
-    <div class="agileits-top">
-      <form action="#" method="post">
-        <form class="login-form">
-          <input class="text" type="text" name="Username" placeholder="Username" required="">
-          <br>
-          <input class="text" type="password" name="password" placeholder="Password" required="">
-          <input type="submit" value="Sign In">
-          <p class="message">Not registered? <a [routerLink]="['/signup']">Create an account</a></p>
-        </form>
-      </form>
-    </div>
+<div class="main-agileinfo">
+  <div class="agileits-top">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <input type="text" formControlName="username" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Username" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+        <br>
+        <input type="password" formControlName="password" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+        <br>
+        <button type="submit" [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+          Login
+        </button>
+        <p class="message">Not registered? <a [routerLink]="['/signup']">Create an account</a></p>
+    </form>
   </div>
+</div>
 <!-- </div> -->

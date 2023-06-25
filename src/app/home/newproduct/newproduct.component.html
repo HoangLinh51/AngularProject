@@ -6,7 +6,7 @@
         <div class="latest-product">
           <h2 class="section-title">New Products</h2>
           <div class="product-carousel" style="transform: translate3d(50px, 0px, 0px); transition: all 0.25s ease 0s">
-            <app-product *ngFor="let product of productList" [product]="product" ></app-product>
+            <app-product *ngFor="let product of datas | paginate:{currentPage: pagination, itemsPerPage: 5, totalItems: allProduct} " [product]="product"></app-product>
           </div>
         </div>
       </div>

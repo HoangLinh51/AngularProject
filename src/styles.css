@@ -665,7 +665,7 @@ body {
 .newsletter-form input[type="submit"] {
   background: none repeat scroll 0 0 #1abc9c;
   border: medium none;
-  color: #fff;
+  color: rgb(0, 0, 0);
   display: inline-block;
   font-size: 18px;
   padding: 7px 20px;

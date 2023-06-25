@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
-import { Product } from 'src/app/product.model';
-import { ProductService } from 'src/app/product.service';
+import { Component, OnInit } from '@angular/core';
+import { Product } from '../product.model';
+import { ProductService } from '../product.service';
 
 @Component({
-  selector: 'app-newproduct',
-  templateUrl: './newproduct.component.html',
-  styleUrls: ['./newproduct.component.css'],
+  selector: 'app-product-detail',
+  templateUrl: './product-detail.component.html',
+  styleUrls: ['./product-detail.component.css'],
 })
-export class NewproductComponent {
+export class ProductDetailComponent {
   allProduct: number = 0;
   pagination: number = 1;
-  pagesize: number = 8;
+  pagesize: number = 6;
   // datas: any;
   datas: Product[] = [];
 
@@ -31,9 +31,5 @@ export class NewproductComponent {
         this.allProduct = res.total;
         console.log('datas------>:', this.datas);
       });
-  }
-  renderPage(event: number) {
-    this.pagination = event;
-    this.getAllproduct();
   }
 }

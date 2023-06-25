@@ -4,7 +4,6 @@
   <div class="zigzag-bottom"></div>
   <div class="container">
     <div class="row" >
-      <!-- <app-product *ngFor="let product of datas" ></app-product> -->
       <app-product *ngFor="let product of datas | paginate: {currentPage: pagination, itemsPerPage: 12, totalItems: allProduct}
        " [product]="product" ></app-product>
 </div>
@@ -13,7 +12,3 @@
 </div>
   </div>
 </div>
-<!-- [product]="product -->
-<!-- [productList]="product.price" -->
-<!-- [product]="currentProduct" -->
-<!-- | paginate : currentPage: pagination, -->

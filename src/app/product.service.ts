@@ -25,9 +25,4 @@ export class ProductService {
     console.log('i------>', i);
     return this.httpClient.get(i);
   }
-
-  // getAll(): Observable<IProductList> {
-  //   this.apiUrl = this.apiUrl + `?limit=${12}&skip=${0}`;
-  //   return this.httpClient.get<IProductList>(this.apiUrl).pipe();
-  // }
 }

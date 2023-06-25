@@ -9,6 +9,8 @@ import { NewproductComponent } from './newproduct/newproduct.component';
 import { PromoComponent } from './promo/promo.component';
 import { HomeComponent } from './home.component';
 import { ProductComponent } from './newproduct/product/product.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,13 @@ import { ProductComponent } from './newproduct/product/product.component';
     HomeComponent,
     ProductComponent,
   ],
-  imports: [BrowserModule, NgOptimizedImage, CarouselModule],
+  imports: [
+    RouterModule,
+    BrowserModule,
+    NgOptimizedImage,
+    CarouselModule,
+    NgxPaginationModule,
+  ],
   providers: [],
   bootstrap: [],
 })
