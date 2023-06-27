@@ -4,6 +4,8 @@ export class Product {
   price!: number;
   images!: string[];
   description!: string;
+  category!: string;
+  brand!: string;
 }
 
 export interface IProductList {

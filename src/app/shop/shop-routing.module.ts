@@ -13,6 +13,10 @@ const productRoutes: Routes = [
     path: 'shop/:id',
     component: ProductDetailComponent,
   },
+  {
+    path: 'shop/category/:category',
+    component: ProductDetailComponent,
+  },
 ];
 
 @NgModule({

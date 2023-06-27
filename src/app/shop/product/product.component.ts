@@ -13,9 +13,10 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getAll(0).subscribe((ps) => this.productList);
+    // console.log(this.productList);
   }
 
-  @Input() product: Product = new Product();
+  @Input() productco: Product = new Product();
 
   @Output() newItemEvent = new EventEmitter<string>();
   addNewItem(value: string) {

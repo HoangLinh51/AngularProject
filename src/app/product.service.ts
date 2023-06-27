@@ -10,6 +10,9 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class ProductService {
+  filter(arg0: (params: any) => any) {
+    throw new Error('Method not implemented.');
+  }
   product!: Product;
   apiUrl = 'https://dummyjson.com/products';
   constructor(private httpClient: HttpClient) {}
@@ -22,7 +25,12 @@ export class ProductService {
 
   getProductById(id: number) {
     const i = this.apiUrl + '/' + id;
-    console.log('i------>', i);
     return this.httpClient.get(i);
+  }
+
+  getProductByCategory(category: string) {
+    const c = this.apiUrl + '/category/' + category;
+    // console.log('c', c);
+    return this.httpClient.get(c);
   }
 }

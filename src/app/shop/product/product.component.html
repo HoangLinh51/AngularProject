@@ -1,11 +1,11 @@
 <div class="col-md-3 col-sm-6 single-product">
   <div class="single-shop-product">
     <div class="product-upper">
-      <img [src]="product.images[0]"  alt="">
+      <img [src]="productco.images[0]"  alt="">
     </div>
-    <h2><a [routerLink]="['/shop/', product.id]" >{{product.title}}</a></h2>
+    <h2><a [routerLink]="['/shop/', productco.id]" >{{productco.title}}</a></h2>
     <div class="product-carousel-price">
-      {{product.price}}
+      {{productco.price}}
     </div>
     <div class="product-option-shop">
       <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow"

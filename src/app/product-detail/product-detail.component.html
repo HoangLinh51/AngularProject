@@ -4,11 +4,12 @@
     <div class="row">
       <div class="col-md-4">
         <app-search-product></app-search-product>
-        <app-similiar-product></app-similiar-product>
+        <h2 class="sidebar-title"> Similiar Products </h2>
+        <app-similiar-product *ngFor="let product of procategory"  [productco]="product"></app-similiar-product>
       </div>
       <div class="col-md-8">
         <div class="product-content-right">
-        <app-decription-product></app-decription-product>
+        <app-decription-product [product]="productDetail"></app-decription-product>
           <div class="related-products-wrapper">
             <h2 class="related-products-title">Related Products</h2>
             <div class="related-products-carousel">

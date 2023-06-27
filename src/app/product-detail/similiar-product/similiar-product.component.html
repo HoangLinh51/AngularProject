@@ -1,31 +1,11 @@
-<div class="single-sidebar">
-  <h2 class="sidebar-title">Similiar Products</h2>
-  <div class="thubmnail-recent">
-    <img src="/assets/img/product-1.png" class="recent-thumb" alt="">
-    <h2><a href="">Samsung Smart TV </a></h2>
-    <div class="product-sidebar-price">
-      <ins>$700.00</ins> <del>$800.00</del>
+<ng-container *ngIf="productco.id">
+  <div class="single-sidebar">
+    <div class="thubmnail-recent">
+      <img src={{productco.images[0]}} class="recent-thumb" alt="">
+      <h2><a [routerLink]="['/shop/', productco.id]">{{productco.title}}</a></h2>
+      <div class="product-sidebar-price">
+        {{productco.price}}
+      </div>
     </div>
   </div>
-  <div class="thubmnail-recent">
-    <img src="/assets/img/product-1.png" class="recent-thumb" alt="">
-    <h2><a href="">Samsung Smart TV </a></h2>
-    <div class="product-sidebar-price">
-      <ins>$700.00</ins> <del>$800.00</del>
-    </div>
-  </div>
-  <div class="thubmnail-recent">
-    <img src="/assets/img/product-1.png" class="recent-thumb" alt="">
-    <h2><a href="">Samsung Smart TV </a></h2>
-    <div class="product-sidebar-price">
-      <ins>$700.00</ins> <del>$800.00</del>
-    </div>
-  </div>
-  <div class="thubmnail-recent">
-    <img src="/assets/img/product-1.png" class="recent-thumb" alt="">
-    <h2><a href="">Samsung Smart TV </a></h2>
-    <div class="product-sidebar-price">
-      <ins>$700.00</ins> <del>$800.00</del>
-    </div>
-  </div>
-</div>
+</ng-container>
