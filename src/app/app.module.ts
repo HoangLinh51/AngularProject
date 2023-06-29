@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -33,20 +33,19 @@ import { ProductDetailModule } from './product-detail/product-detail.module';
     SignUpComponent,
   ],
   imports: [
+    BrowserModule,
     RouterModule,
     CommonModule,
-    BrowserModule,
-    NgOptimizedImage,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule,
     CarouselModule,
     HomeModule,
     ShopModule,
     CartModule,
     CheckoutModeule,
     AuthRoutingModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     ProductDetailModule,
   ],
   providers: [fakeBackendProvider],

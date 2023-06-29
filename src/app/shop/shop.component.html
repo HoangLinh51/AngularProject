@@ -3,12 +3,17 @@
 <div class="single-product-area">
   <div class="zigzag-bottom"></div>
   <div class="container">
-    <div class="row" >
-      <app-product *ngFor="let product of datas | paginate: {currentPage: pagination, itemsPerPage: 12, totalItems: allProduct}
-       " [productco]="product" ></app-product>
-</div>
-<div class="d-flex justify-content-center">
-  <pagination-controls (pageChange)="renderPage($event)"></pagination-controls>
-</div>
+    <form [formGroup]="form" (ngSubmit)="search()">
+      <input type="text" formControlName ="search"  [ngClass]="{'is-invalid': submitted && f.search}" placeholder="Search">
+      <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+    <div class="row">
+
+      <app-product *ngFor="let product of datas | paginate: {currentPage: pagination, itemsPerPage: 12, totalItems: totalproduct}
+       " [productco]="product"></app-product>
+    </div>
+    <div class="d-flex justify-content-center">
+      <pagination-controls (pageChange)="renderPage($event)"></pagination-controls>
+    </div>
   </div>
 </div>

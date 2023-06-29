@@ -11,6 +11,9 @@ import { HomeComponent } from './home.component';
 import { ProductComponent } from './newproduct/product/product.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule } from '@angular/router';
+import { TopSellersComponent } from './bestproduct/top-sellers/top-sellers.component';
+import { RecentlyViewedComponent } from './bestproduct/recently-viewed/recently-viewed.component';
+import { TopNewComponent } from './bestproduct/top-new/top-new.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { RouterModule } from '@angular/router';
     BestproductComponent,
     HomeComponent,
     ProductComponent,
+    TopSellersComponent,
+    RecentlyViewedComponent,
+    TopNewComponent,
   ],
   imports: [
     RouterModule,

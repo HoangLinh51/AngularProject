@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Observable, of, delay, throwError } from 'rxjs';
-// import { CategoryService } from './category.service';
-import { IProductList, Product } from '../product.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable, of, delay, throwError, skip } from 'rxjs';
+import { Product } from '../product.model';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -10,24 +10,28 @@ import { ProductService } from '../product.service';
   styleUrls: ['./shop.component.css'],
 })
 export class ShopComponent {
-  allProduct: number = 0;
+  totalproduct: number = 0;
   pagination: number = 0;
-  // datas: any;
   datas: Product[] = [];
+  form!: FormGroup;
+  submitted = false;
 
   constructor(
-    private productService: ProductService // private categoryService: CategoryService
+    private productService: ProductService,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.getAllproduct();
-    // this.getAllcategories();
+    this.form = this.formBuilder.group({
+      search: ['', Validators.required],
+    });
   }
 
   getAllproduct() {
     this.productService.getAll(this.pagination).subscribe((res: any) => {
       this.datas = res.products;
-      this.allProduct = res.total;
+      this.totalproduct = res.total;
       // console.log('datas------>:', this.datas);
     });
   }
@@ -44,12 +48,17 @@ export class ShopComponent {
       return throwError(new Error('404 Not Found'));
     }
   }
-  //  this.productService.getAll(this.pagination).subscribe((res: any) => {
-
-  // getAllcategories(): void {
-  //   this.categoryService.getAll().subscribe((res: any) => {
-  //     this.category = res.category;
-  //     console.log('getAllcategories------>:', this.category);
-  //   });
-  // }
+  get f() {
+    return this.form.controls;
+  }
+  search() {
+    this.submitted = true;
+    this.productService
+      .searchProduct(this.f.search.value)
+      .subscribe((res: any) => {
+        this.datas = res.products;
+        this.totalproduct = res.total;
+        // console.log('product-search', res);
+      });
+  }
 }

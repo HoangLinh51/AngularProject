@@ -9,20 +9,25 @@ import { PaymentMethodsComponent } from './payment-methods/payment-methods.compo
 import { YourOrderComponent } from './your-order/your-order.component';
 import { CheckoutComponent } from './checkout.component';
 import { SearchProductComponent } from './search-product/search-product.component';
-
-import { SimilarProductComponent } from './similar-product/similar-product.component';
+import { OrtherProductComponent } from '../checkout/orther-product/orther-product.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
     SearchProductComponent,
-    SimilarProductComponent,
     BillingDetailsComponent,
     DiferentAddressComponent,
     PaymentMethodsComponent,
     YourOrderComponent,
     CheckoutComponent,
+    OrtherProductComponent,
   ],
-  imports: [BrowserModule, NgOptimizedImage, CarouselModule],
+  imports: [
+    BrowserModule,
+    NgOptimizedImage,
+    CarouselModule,
+    NgxPaginationModule,
+  ],
   providers: [],
   bootstrap: [],
 })

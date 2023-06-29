@@ -6,9 +6,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { GrossProductComponent } from './gross-product/gross-product.component';
 import { InterestedProductComponent } from './interested-product/interested-product.component';
 import { SearchProductComponent } from './search-product/search-product.component';
-import { SimilarProductComponent } from './similar-product/similar-product.component';
+import { OrtherProductComponent } from './orther-product/orther-product.component';
 import { CartTotalsComponent } from './cart-totals/cart-totals.component';
 import { CartComponent } from './cart.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -17,9 +18,14 @@ import { CartComponent } from './cart.component';
     GrossProductComponent,
     InterestedProductComponent,
     SearchProductComponent,
-    SimilarProductComponent,
+    OrtherProductComponent,
   ],
-  imports: [BrowserModule, NgOptimizedImage, CarouselModule],
+  imports: [
+    BrowserModule,
+    NgOptimizedImage,
+    CarouselModule,
+    NgxPaginationModule,
+  ],
   providers: [],
   bootstrap: [],
 })

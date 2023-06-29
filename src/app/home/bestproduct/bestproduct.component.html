@@ -6,145 +6,24 @@
         <div class="single-product-widget">
           <h2 class="product-wid-title">Top Sellers</h2>
           <a routerLink="" class="wid-view-more">View All</a>
-          <div class="single-wid-product">
-            <a routerLink="single-product.html"><img src="/assets/img/product-thumb-1.jpg" width="90" alt=""
-                class="product-thumb"></a>
-            <h2><a routerLink="single-product.html">Samsung Smart TV </a></h2>
-            <div class="product-wid-rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-            </div>
-            <div class="product-wid-price">
-              <ins>$400.00</ins> <del>$425.00</del>
-            </div>
-          </div>
-          <div class="single-wid-product">
-            <a routerLink="single-product.html"><img src="/assets/img/product-2.jpg" alt="" class="product-thumb"></a>
-            <h2><a routerLink="single-product.html">MacBook Pro 14" 2020</a></h2>
-            <div class="product-wid-rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-            </div>
-            <div class="product-wid-price">
-              <ins>$400.00</ins> <del>$425.00</del>
-            </div>
-          </div>
-          <div class="single-wid-product">
-            <a routerLink="single-product.html"><img src="/assets/img/product-3.png" alt="" class="product-thumb"></a>
-            <h2><a routerLink="single-product.html">iPhone 13 Pro Max</a></h2>
-            <div class="product-wid-rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-            </div>
-            <div class="product-wid-price">
-              <ins>$400.00</ins> <del>$425.00</del>
-            </div>
-          </div>
+          <app-top-sellers *ngFor="let product of datas
+          " [productco]="product" ></app-top-sellers>
         </div>
       </div>
       <div class="col-md-4">
         <div class="single-product-widget">
           <h2 class="product-wid-title">Recently Viewed</h2>
           <a routerLink="#" class="wid-view-more">View All</a>
-          <div class="single-wid-product">
-            <a routerLink="single-product.html"><img src="/assets/img/product-4.jfif" alt="" class="product-thumb"></a>
-            <h2><a routerLink="single-product.html">Playstation-5</a></h2>
-            <div class="product-wid-rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-            </div>
-            <div class="product-wid-price">
-              <ins>$400.00</ins> <del>$425.00</del>
-            </div>
-          </div>
-          <div class="single-wid-product">
-            <a routerLink="single-product.html"><img src="/assets/img/product-5.png" alt="" class="product-thumb"></a>
-            <h2><a routerLink="single-product.html">Asus TUF A15</a></h2>
-            <div class="product-wid-rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-            </div>
-            <div class="product-wid-price">
-              <ins>$400.00</ins> <del>$425.00</del>
-            </div>
-          </div>
-          <div class="single-wid-product">
-            <a routerLink="single-product.html"><img src="/assets/img/product-6.jfif" alt="" class="product-thumb"></a>
-            <h2><a routerLink="single-product.html">PC Gamming</a></h2>
-            <div class="product-wid-rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-            </div>
-            <div class="product-wid-price">
-              <ins>$400.00</ins> <del>$425.00</del>
-            </div>
-          </div>
+          <app-recently-viewed *ngFor="let product of datas
+          " [productco]="product"></app-recently-viewed>
         </div>
       </div>
       <div class="col-md-4">
         <div class="single-product-widget">
           <h2 class="product-wid-title">Top New</h2>
           <a routerLink="#" class="wid-view-more">View All</a>
-          <div class="single-wid-product">
-            <a routerLink="single-product.html"><img src="/assets/img/product-3.png" alt="" class="product-thumb"></a>
-            <h2><a routerLink="single-product.html">iPhone 13 Pro Max</a></h2>
-            <div class="product-wid-rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-            </div>
-            <div class="product-wid-price">
-              <ins>$400.00</ins> <del>$425.00</del>
-            </div>
-          </div>
-          <div class="single-wid-product">
-            <a routerLink="single-product.html"><img src="/assets/img/product-4.jfif" alt="" class="product-thumb"></a>
-            <h2><a routerLink="single-product.html">Asus TUF A15</a></h2>
-            <div class="product-wid-rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-            </div>
-            <div class="product-wid-price">
-              <ins>$400.00</ins> <del>$425.00</del>
-            </div>
-          </div>
-          <div class="single-wid-product">
-            <a routerLink="single-product.html"><img src="/assets/img/product-6.jfif" alt="" class="product-thumb"></a>
-            <h2><a routerLink="single-product.html">PC Gamming</a></h2>
-            <div class="product-wid-rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-            </div>
-            <div class="product-wid-price">
-              <ins>$400.00</ins> <del>$425.00</del>
-            </div>
-          </div>
+          <app-top-new *ngFor="let product of datas
+          " [productco]="product"></app-top-new>
         </div>
       </div>
     </div>
