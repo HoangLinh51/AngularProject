@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from './product.model';
+import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders(),
@@ -17,6 +18,7 @@ export class ProductService {
   getAll(page: number, pagesize = 12) {
     var skip = (page - 1) * pagesize;
     const a = this.apiUrl + `?limit=${pagesize}` + `&skip=${skip}`;
+    console.log('a', a);
     return this.httpClient.get(a);
   }
 
@@ -30,9 +32,14 @@ export class ProductService {
     // console.log('c', c);
     return this.httpClient.get(c);
   }
-  searchProduct(search: string) {
-    const s = this.apiUrl + '/search?q=' + search;
-    console.log('s', s);
+  searchProduct(search: string, page: number, pagesize = 12) {
+    var skip = (page - 1) * pagesize;
+    const s =
+      this.apiUrl +
+      '/search?q=' +
+      search +
+      `&limit=${pagesize}` +
+      `&skip=${skip}`;
     return this.httpClient.get(s);
   }
 }

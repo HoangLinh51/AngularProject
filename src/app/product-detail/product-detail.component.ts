@@ -40,7 +40,7 @@ export class ProductDetailComponent {
 
   getAllproduct() {
     this.productService
-      .getAll(this.pagination, this.pagesize)
+      .searchProduct('', this.pagination, this.pagesize)
       .subscribe((res: any) => {
         this.datas = res.products;
         console.log('product-related', this.datas);

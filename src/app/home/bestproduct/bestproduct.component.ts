@@ -21,7 +21,7 @@ export class BestproductComponent {
   }
   getAllproduct() {
     this.productService
-      .getAll(this.pagination, this.pagesize)
+      .searchProduct('', this.pagination, this.pagesize)
       .subscribe((res: any) => {
         this.datas = res.products;
         // console.log('datas------>:', this.datas);

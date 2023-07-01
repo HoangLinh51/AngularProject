@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, of, delay, throwError, skip } from 'rxjs';
 import { Product } from '../product.model';
@@ -11,7 +11,7 @@ import { ProductService } from '../product.service';
 })
 export class ShopComponent {
   totalproduct: number = 0;
-  pagination: number = 0;
+  page: number = 0;
   datas: Product[] = [];
   form!: FormGroup;
   submitted = false;
@@ -22,22 +22,28 @@ export class ShopComponent {
   ) {}
 
   ngOnInit(): void {
-    this.getAllproduct();
     this.form = this.formBuilder.group({
       search: ['', Validators.required],
     });
+    this.getlist('', 1);
+  }
+
+  get f() {
+    return this.form.controls;
   }
 
   getAllproduct() {
-    this.productService.getAll(this.pagination).subscribe((res: any) => {
+    this.productService.getAll(this.page).subscribe((res: any) => {
       this.datas = res.products;
       this.totalproduct = res.total;
       // console.log('datas------>:', this.datas);
     });
   }
+
   renderPage(event: number) {
-    this.pagination = event;
-    this.getAllproduct();
+    console.log('event: ', event);
+    this.page = event;
+    this.getlist('', event);
   }
 
   getProductbyId(id: number): Observable<Product> {
@@ -48,17 +54,18 @@ export class ShopComponent {
       return throwError(new Error('404 Not Found'));
     }
   }
-  get f() {
-    return this.form.controls;
+
+  getlist(keyword: string, page: number) {
+    this.productService.searchProduct(keyword, page).subscribe((res: any) => {
+      this.datas = res.products;
+      this.totalproduct = res.total;
+      // console.log('res', res);
+    });
   }
+
   search() {
-    this.submitted = true;
-    this.productService
-      .searchProduct(this.f.search.value)
-      .subscribe((res: any) => {
-        this.datas = res.products;
-        this.totalproduct = res.total;
-        // console.log('product-search', res);
-      });
+    const keyword = this.f.search.value;
+    this.page = 1;
+    this.getlist(keyword, this.page);
   }
 }
