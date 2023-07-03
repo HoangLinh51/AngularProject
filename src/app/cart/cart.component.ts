@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
+import { GrossProductComponent } from './gross-product/gross-product.component';
 
 @Component({
   selector: 'app-cart',
@@ -12,18 +13,16 @@ export class CartComponent {
   pagination: number = 2;
   pagesize: number = 5;
   datas: Product[] = [];
+  dataFromStorage: any[] = [];
+  receivedData: any;
+  productco: Product = new Product();
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.getAllproduct();
+    this.getDataFromStorage();
   }
-  // getProductCategory(category: string) {
-  //   this.productService.getProductByCategory(category).subscribe((res: any) => {
-  //     this.procategory = res.products;
-  //     console.log('product-similiar------>:', this.procategory);
-  //   });
-  // }
 
   getAllproduct() {
     this.productService
@@ -31,7 +30,28 @@ export class CartComponent {
       .subscribe((res: any) => {
         this.datas = res.products;
         this.allProduct = res.total;
-        console.log('datas-----asdfa->:', this.datas);
+        // console.log('datas------>:', this.datas);
       });
+  }
+
+  getDataFromStorage(): void {
+    const storageData = localStorage.getItem('cart');
+    if (storageData) {
+      this.dataFromStorage = JSON.parse(storageData);
+    }
+  }
+
+  removeItem(productco: any) {
+    this.receivedData = productco;
+    this.getDataFromStorage();
+    const uData = this.dataFromStorage.filter(
+      (product) => product.id !== this.receivedData
+    );
+    // console.log('uData', uData);
+    localStorage.setItem('cart', JSON.stringify(uData));
+    const storageData = localStorage.getItem('cart');
+    if (storageData) {
+      this.dataFromStorage = JSON.parse(storageData);
+    }
   }
 }

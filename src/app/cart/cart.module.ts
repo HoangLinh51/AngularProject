@@ -10,6 +10,7 @@ import { OrtherProductComponent } from './orther-product/orther-product.componen
 import { CartTotalsComponent } from './cart-totals/cart-totals.component';
 import { CartComponent } from './cart.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgOptimizedImage,
     CarouselModule,
     NgxPaginationModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [],

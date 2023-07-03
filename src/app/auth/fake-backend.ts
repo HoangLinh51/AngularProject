@@ -45,7 +45,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     // route functions
-
     function authenticate() {
       const { username, password } = body;
       const user = users.find(
@@ -68,8 +67,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       user.id = users.length ? Math.max(...users.map((x) => x.id)) + 1 : 1;
       users.push(user);
       localStorage.setItem(usersKey, JSON.stringify(users));
-      console.log('user-------', user);
-      console.log('users-------', users);
       return ok();
     }
 

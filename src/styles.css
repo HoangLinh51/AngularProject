@@ -1054,8 +1054,8 @@ table.shop_table th {
 }
 
 td.product-thumbnail img {
-  height: auto;
-  width: 70px;
+  height: 90px;
+  width: 75px;
 }
 
 td.product-name {

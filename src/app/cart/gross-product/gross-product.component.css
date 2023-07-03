@@ -1,0 +1,20 @@
+.gross-product{
+  height: 80px;
+}
+.product-thumbnail{
+  width: 200px;
+}
+.product-name{
+  width: 200px;
+  height: 100px;
+}
+.product-price {
+  width: 90px;
+}
+img{
+  width: 100px;
+  height: 100px;
+}
+.product-subtotal{
+  width: 90px
+}

@@ -3,14 +3,44 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-       <app-search></app-search>
-       <h2 class="sidebar-title">Orther Product</h2>
-       <app-orther *ngFor="let product of datas | paginate:{currentPage: pagination, itemsPerPage: 5, totalItems: allProduct} " [product]="product"></app-orther>
+        <app-search></app-search>
+        <h2 class="sidebar-title">Orther Product</h2>
+        <app-orther
+          *ngFor="let product of datas | paginate:{currentPage: pagination, itemsPerPage: 5, totalItems: allProduct} "
+          [product]="product"></app-orther>
       </div>
       <div class="col-md-8">
         <div class="product-content-right">
           <div class="woocommerce">
-            <app-gross></app-gross>
+            <h2 class="sidebar-title">Gross Product</h2>
+            <!-- <form method="post" action="#"> -->
+            <table cellspacing="0" class="shop_table cart">
+              <!-- <thead>
+                  <tr>
+                    <th class="product-thumbnail">&nbsp;</th>
+                    <th class="product-name">Product</th>
+                    <th class="product-price">Price</th>
+                    <th class="product-quantity">Quantity</th>
+                    <th class="product-subtotal">Total</th>
+                  </tr>
+                </thead>  -->
+              <tbody>
+                <app-gross (sendData)="removeItem($event)" *ngFor="let product of dataFromStorage" [productco]="product"></app-gross>
+                <tr>
+                  <td class="actions" colspan="6">
+                    <div class="coupon">
+                      <label for="coupon_code">Coupon:</label>
+                      <input type="text" placeholder="Coupon code" value="" id="coupon_code" class="input-text"
+                        name="coupon_code">
+                      <input type="submit" value="Apply Coupon" name="apply_coupon" class="button">
+                    </div>
+                    <input type="submit" value="Proceed to Checkout" name="proceed"
+                      class="checkout-button button alt wc-forward">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- </form> -->
             <app-interested></app-interested>
           </div>
         </div>
@@ -18,3 +48,4 @@
     </div>
   </div>
 </div>
+<!--  -->
