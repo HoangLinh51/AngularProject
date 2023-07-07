@@ -34,11 +34,24 @@ export class ProductComponent implements OnInit {
     return this.form.controls;
   }
   addToCart() {
-    let productsotrage = JSON.parse(localStorage.getItem(key)!) || [];
+    // debugger;
+    let productstorage = JSON.parse(localStorage.getItem(key)!) || [];
     const product = this.f.product.value;
-    const a = productsotrage.push(product);
-    // console.log('productsotrage', productsotrage);
-    // console.log('a', a);
-    localStorage.setItem(key, JSON.stringify(productsotrage));
+
+    let abc = false;
+    for (let i = 0; i < productstorage.length; ++i) {
+      const c = productstorage[i];
+      if (c.id === product.id) {
+        productstorage[i].quantity += 1;
+        console.log('product=-------', productstorage[i]);
+        abc = true;
+      }
+    }
+    if (!abc) {
+      product.quantity = 1;
+      productstorage.push(product);
+    }
+
+    localStorage.setItem(key, JSON.stringify(productstorage));
   }
 }

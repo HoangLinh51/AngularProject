@@ -9,6 +9,7 @@ import { Product } from 'src/app/product.model';
 export class GrossProductComponent {
   dataFromStorage: any[] = [];
   product: Product[] = [];
+  quantityChange!: number;
 
   @Input() productco: Product = new Product();
   @Output() sendData = new EventEmitter<number>();
@@ -19,5 +20,18 @@ export class GrossProductComponent {
 
   removeItem() {
     this.sendData.emit(this.productco.id);
+  }
+  onChangeQuantity() {
+    let productstorage = JSON.parse(localStorage.getItem('cart')!);
+
+    let abc = false;
+    for (let i = 0; i < productstorage.length; ++i) {
+      const c = productstorage[i];
+      if (c.id === this.productco.id) {
+        productstorage[i].quantity = this.productco.quantity;
+        abc = true;
+      }
+    }
+    localStorage.setItem('cart', JSON.stringify(productstorage));
   }
 }

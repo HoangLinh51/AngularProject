@@ -6,6 +6,8 @@ export class Product {
   description!: string;
   category!: string;
   brand!: string;
+  quantity!: number;
+  totalAmount!: number;
 }
 
 export interface IProductList {

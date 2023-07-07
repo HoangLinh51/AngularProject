@@ -1,4 +1,4 @@
-<ng-container *ngIf="productco.id"></ng-container>
+<ng-container *ngIf="productco.id">
 <tr class="gross-product">
   <td class="product-remove">
     <button type="submit" (click)="removeItem()"><i class="fa-solid fa-xmark"></i></button>
@@ -15,11 +15,13 @@
   </td>
   <td class="product-quantity">
     <div class="quantity buttons_added">
-      <input type="number" size="4" class="input-text qty text" title="Qty" value="1" min="0" step="1">
+      <input type="number" size="4" class="quantity" title="Qty" min="1" step="1" max="4" [(ngModel)]="productco.quantity" (ngModelChange)="onChangeQuantity()">
+      <!-- <span>{{productco.quantity}}</span> -->
     </div>
   </td>
   <td class="product-subtotal">
-    <span class="amount">${{productco.price}}</span>
+    <span class="amount">${{productco.price * productco.quantity}}</span>
   </td>
 </tr>
-
+</ng-container>
+<!-- (ngModel)]="quantity" -->
