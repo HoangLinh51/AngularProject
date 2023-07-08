@@ -14,6 +14,7 @@ const httpOptions = {
 })
 export class AuthService {
   apiUrl = 'http://localhost:4000';
+  public isAuthorized = false;
 
   private userSubject: BehaviorSubject<IUser | null>;
   public user: Observable<IUser | null>;
@@ -40,7 +41,7 @@ export class AuthService {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('user', JSON.stringify(user));
           this.userSubject.next(user);
-          console.log('user', localStorage);
+          this.isAuthorized = true;
           return user;
         })
       );
@@ -50,6 +51,7 @@ export class AuthService {
     // remove user from local storage and set current user to null
     localStorage.removeItem('user');
     this.userSubject.next(null);
+    this.isAuthorized = false;
     this.router.navigate(['/signin']);
   }
 

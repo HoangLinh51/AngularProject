@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../auth.service';
 import { first } from 'rxjs/operators';
-import { AlertService } from '../alert.service';
+import { AlertService } from '../../alert.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -55,11 +55,7 @@ export class SignInComponent implements OnInit {
           // get return url from query parameters or default to home page
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
           this.router.navigateByUrl(returnUrl);
-          console.log(
-            'f.value----->',
-            this.f.username.value,
-            this.f.password.value
-          );
+          // console.log('f.value----->',this.f.username.value,this.f.password.value);
         },
         error: (error) => {
           this.alertService.error(error);

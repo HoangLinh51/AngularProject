@@ -31,7 +31,7 @@ export class CheckoutComponent {
       .subscribe((res: any) => {
         this.datas = res.products;
         this.allProduct = res.total;
-        console.log('datas-----asdfa->:', this.datas);
+        // console.log('datas-----asdfa->:', this.datas);
       });
   }
 }

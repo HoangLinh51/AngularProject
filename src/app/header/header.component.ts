@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IUser } from '../auth/auth.model';
-import { AuthService } from '../auth/auth.service';
+import { IUser } from '../auth.model';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'header',
@@ -12,7 +12,7 @@ export class HeaderComponent {
 
   constructor(private authService: AuthService) {
     this.authService.user.subscribe((x) => (this.user = x));
-    console.log('this.user--------', this.user);
+    // console.log('this.user--------', this.user);
   }
 
   logout() {

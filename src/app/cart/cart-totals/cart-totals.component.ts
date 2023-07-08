@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { Product } from 'src/app/product.model';
 
 @Component({
@@ -10,6 +10,7 @@ export class CartTotalsComponent {
   product: Product[] = [];
 
   @Input() productco: Product = new Product();
+  @Output() totalAmounts!: CartTotalsComponent;
   constructor() {}
 
   totalAmount() {

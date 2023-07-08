@@ -48,8 +48,6 @@ export class CartComponent {
     const uData = this.dataFromStorage.filter(
       (product) => product.id !== this.receivedData
     );
-    console.log('uData====', uData);
-    console.log('product====', productco);
 
     localStorage.setItem('cart', JSON.stringify(uData));
     const storageData = localStorage.getItem('cart');

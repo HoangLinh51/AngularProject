@@ -17,7 +17,7 @@ import { CheckoutModeule } from './checkout/checkout.module';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { AuthRoutingModule } from './auth/auth-routing.module';
-import { fakeBackendProvider } from './auth/fake-backend';
+import { fakeBackendProvider } from './fake-backend';
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { RouterModule } from '@angular/router';

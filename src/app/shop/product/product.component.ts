@@ -43,7 +43,7 @@ export class ProductComponent implements OnInit {
       const c = productstorage[i];
       if (c.id === product.id) {
         productstorage[i].quantity += 1;
-        console.log('product=-------', productstorage[i]);
+        // console.log('product=-------', productstorage[i]);
         abc = true;
       }
     }

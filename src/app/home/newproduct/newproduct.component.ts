@@ -29,7 +29,7 @@ export class NewproductComponent {
       .subscribe((res: any) => {
         this.datas = res.products;
         this.allProduct = res.total;
-        console.log('datas------>:', this.datas);
+        // console.log('datas------>:', this.datas);
       });
   }
   renderPage(event: number) {

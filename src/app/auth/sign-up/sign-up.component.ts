@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { AlertService } from '../alert.service';
-import { AuthService } from '../auth.service';
+import { AlertService } from '../../alert.service';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,8 +14,6 @@ export class SignUpComponent implements OnInit {
   form!: FormGroup;
   loading = false;
   submitted = false;
-
-  // users: any[] = JSON.parse(localStorage.getItem(usersKey)!) || [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,7 +30,6 @@ export class SignUpComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
-    console.log('this.form', this.form);
   }
 
   // convenience getter for easy access to form fields
@@ -67,6 +64,5 @@ export class SignUpComponent implements OnInit {
           this.loading = false;
         },
       });
-    console.log('form value-------->', this.form.value);
   }
 }

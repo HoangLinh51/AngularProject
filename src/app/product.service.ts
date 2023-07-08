@@ -18,7 +18,6 @@ export class ProductService {
   getAll(page: number, pagesize = 12) {
     var skip = (page - 1) * pagesize;
     const a = this.apiUrl + `?limit=${pagesize}` + `&skip=${skip}`;
-    console.log('a', a);
     return this.httpClient.get(a);
   }
 
