@@ -42,7 +42,6 @@ export class SignUpComponent implements OnInit {
 
     // reset alerts on submit
     this.alertService.clear();
-    const userkey = 'user';
     // stop here if form is invalid
     if (this.form.invalid) {
       return;

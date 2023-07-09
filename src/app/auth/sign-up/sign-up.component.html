@@ -13,8 +13,7 @@
 <div class="main-agileinfo">
   <div class="agileits-top">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <input type="text" formControlName="firstName" class="form-control"
-        [ngClass]="{'is-invalid': submitted && f.firstName.errors }" placeholder="Firstname">
+      <input type="text" formControlName="firstName" class="form-control" [ngClass]="{'is-invalid': submitted && f.firstName.errors }" placeholder="Firstname">
       <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
         <div *ngIf="f.firstName.errors.required">First Name is required</div>
       </div>

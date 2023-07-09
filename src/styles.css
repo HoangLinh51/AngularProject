@@ -1180,7 +1180,8 @@ div.cart-collaterals ul.products li.product .price ins {
 }
 
 #customer_details label {
-  display: block;
+  display: inline-block;
+  list-style-type: none;
   margin: 0 0 5px;
 }
 

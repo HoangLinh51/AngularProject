@@ -7,10 +7,6 @@ import { Product } from 'src/app/product.model';
   styleUrls: ['./gross-product.component.css'],
 })
 export class GrossProductComponent {
-  dataFromStorage: any[] = [];
-  product: Product[] = [];
-  quantityChange!: number;
-
   @Input() productco: Product = new Product();
   @Output() sendData = new EventEmitter<number>();
 
@@ -23,7 +19,6 @@ export class GrossProductComponent {
   }
   onChangeQuantity() {
     let productstorage = JSON.parse(localStorage.getItem('cart')!);
-
     let abc = false;
     for (let i = 0; i < productstorage.length; ++i) {
       const c = productstorage[i];

@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from 'src/app/product.model';
 
 @Component({
@@ -10,7 +10,7 @@ export class CartTotalsComponent {
   product: Product[] = [];
 
   @Input() productco: Product = new Product();
-  @Output() totalAmounts!: CartTotalsComponent;
+  @Output() totalAmounts = new EventEmitter<number>();
   constructor() {}
 
   totalAmount() {

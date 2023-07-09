@@ -1,7 +1,7 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
-import { GrossProductComponent } from './gross-product/gross-product.component';
 
 @Component({
   selector: 'app-cart',
@@ -17,6 +17,7 @@ export class CartComponent {
   receivedData: any;
   productco: Product = new Product();
   quantity!: number;
+  form!: FormGroup;
 
   constructor(private productService: ProductService) {}
 
@@ -55,4 +56,5 @@ export class CartComponent {
       this.dataFromStorage = JSON.parse(storageData);
     }
   }
+  submitOrder() {}
 }

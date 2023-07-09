@@ -13,17 +13,13 @@ export class CheckoutComponent {
   pagesize: number = 5;
   datas: Product[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService) {
+    // this.getDataFrLocalStorage();
+  }
 
   ngOnInit(): void {
     this.getAllproduct();
   }
-  // getProductCategory(category: string) {
-  //   this.productService.getProductByCategory(category).subscribe((res: any) => {
-  //     this.procategory = res.products;
-  //     console.log('product-similiar------>:', this.procategory);
-  //   });
-  // }
 
   getAllproduct() {
     this.productService
@@ -31,7 +27,11 @@ export class CheckoutComponent {
       .subscribe((res: any) => {
         this.datas = res.products;
         this.allProduct = res.total;
-        // console.log('datas-----asdfa->:', this.datas);
       });
   }
+  // getDataFrLocalStorage() {
+  //   const dataFrLocalStorage = JSON.parse(localStorage.getItem('cart')!);
+  //   console.log('dataFrLocalStorage', dataFrLocalStorage);
+  //   return dataFrLocalStorage;
+  // }
 }
