@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Product } from 'src/app/product.model';
-import { ProductService } from 'src/app/product.service';
 
 @Component({
   selector: 'app-top-new',
@@ -8,7 +7,6 @@ import { ProductService } from 'src/app/product.service';
   styleUrls: ['./top-new.component.css'],
 })
 export class TopNewComponent {
-  productList: Product[] = [];
   constructor() {}
 
   ngOnInit(): void {}

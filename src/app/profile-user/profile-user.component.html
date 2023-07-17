@@ -1,0 +1,52 @@
+<div class="container emp-profile">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="profile-img">
+        <img src="https://khoinguonsangtao.vn/wp-content/uploads/2022/11/hinh-avatar-viet-nam-dang-meme.png" alt="" />
+        <br><br>
+        <div class="file btn btn-lg btn-primary">
+          Change Photo
+          <input type="file" name="file" />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="profile-head">
+        <h5>
+          {{user?.username}}
+        </h5>
+
+        <mat-tab-group>
+          <ul class="nav nav-tabs">
+            <mat-tab label="About">
+              <form class="example-form" [formGroup]="form" (ngSubmit)="saveInfor()">
+                <br>
+                <mat-form-field class="agileits-top">
+                  <mat-label>First Name</mat-label>
+                  <input matInput type="text" class="form-control" [ngModel]="user?.firstName"
+                    formControlName="firstName" [ngClass]="{'is-invalid': submitted && f.firstName.errors }">
+                </mat-form-field>
+                <br><br>
+                <mat-form-field class="agileits-top">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput type="text" class="form-control" [ngModel]="user?.lastName" formControlName="lastName"
+                    [ngClass]="{'is-invalid': submitted && f.lastName.errors }">
+                </mat-form-field>
+                <button type="submit" class="profile-edit-btn" name="btnAddMore">Edit Profile</button>
+              </form>
+            </mat-tab>
+
+            <mat-tab label="History Order">
+              <mat-selection-list class="tab-title"  *ngFor="let order of orders" [order]="order">
+
+                <a [routerLink]="['order/', order.id]" >{{order.id}} - {{order.name}} - {{order.address}} - {{order.payment}}</a>
+
+              </mat-selection-list>
+            </mat-tab>
+          </ul>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

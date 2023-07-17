@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { IUser } from '../auth.model';
+import { AuthService } from '../auth.service';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
 
@@ -15,11 +17,16 @@ export class CartComponent {
   datas: Product[] = [];
   dataFromStorage: any[] = [];
   receivedData: any;
-  productco: Product = new Product();
   quantity!: number;
   form!: FormGroup;
+  user: IUser | null;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private authService: AuthService
+  ) {
+    this.user = this.authService.userValue;
+  }
 
   ngOnInit(): void {
     this.getAllproduct();
@@ -32,12 +39,11 @@ export class CartComponent {
       .subscribe((res: any) => {
         this.datas = res.products;
         this.allProduct = res.total;
-        // console.log('datas------>:', this.datas);
       });
   }
 
   getDataFromStorage(): void {
-    const storageData = localStorage.getItem('cart');
+    const storageData = localStorage.getItem('cart' + this.user?.id);
     if (storageData) {
       this.dataFromStorage = JSON.parse(storageData);
     }
@@ -50,11 +56,10 @@ export class CartComponent {
       (product) => product.id !== this.receivedData
     );
 
-    localStorage.setItem('cart', JSON.stringify(uData));
-    const storageData = localStorage.getItem('cart');
+    localStorage.setItem('cart' + this.user?.id, JSON.stringify(uData));
+    const storageData = localStorage.getItem('cart' + this.user?.id);
     if (storageData) {
       this.dataFromStorage = JSON.parse(storageData);
     }
   }
-  submitOrder() {}
 }

@@ -1,10 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { IUser } from 'src/app/auth.model';
+import { AuthService } from 'src/app/auth.service';
 import { Product } from '../../product.model';
-
-const key = 'cart';
-// let productsotrage = JSON.parse(localStorage.getItem(key)!) || [];
-// let products = JSON.parse(localStorage.getItem(key)!);
 
 @Component({
   selector: 'app-product',
@@ -14,8 +12,14 @@ const key = 'cart';
 export class ProductComponent implements OnInit {
   productList: Product[] = [];
   form!: FormGroup;
+  user: IUser | null;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {
+    this.user = this.authService.userValue;
+  }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -35,7 +39,8 @@ export class ProductComponent implements OnInit {
   }
   addToCart() {
     // debugger;
-    let productstorage = JSON.parse(localStorage.getItem(key)!) || [];
+    let productstorage =
+      JSON.parse(localStorage.getItem('cart' + this.user?.id)!) || [];
     const product = this.f.product.value;
 
     let abc = false;
@@ -52,6 +57,9 @@ export class ProductComponent implements OnInit {
       productstorage.push(product);
     }
 
-    localStorage.setItem(key, JSON.stringify(productstorage));
+    localStorage.setItem(
+      'cart' + this.user?.id,
+      JSON.stringify(productstorage)
+    );
   }
 }

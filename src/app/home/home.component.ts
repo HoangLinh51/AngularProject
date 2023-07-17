@@ -12,5 +12,6 @@ export class HomeComponent {
 
   constructor(private authService: AuthService) {
     this.user = this.authService.userValue;
+    console.log(this.user);
   }
 }

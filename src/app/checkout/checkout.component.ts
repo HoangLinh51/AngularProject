@@ -29,9 +29,4 @@ export class CheckoutComponent {
         this.allProduct = res.total;
       });
   }
-  // getDataFrLocalStorage() {
-  //   const dataFrLocalStorage = JSON.parse(localStorage.getItem('cart')!);
-  //   console.log('dataFrLocalStorage', dataFrLocalStorage);
-  //   return dataFrLocalStorage;
-  // }
 }

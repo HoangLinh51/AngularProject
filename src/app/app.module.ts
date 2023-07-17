@@ -18,20 +18,12 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { fakeBackendProvider } from './fake-backend';
-
-import { CarouselModule } from 'ngx-owl-carousel-o';
 import { RouterModule } from '@angular/router';
 import { ProductDetailModule } from './product-detail/product-detail.module';
+import { ProfileModule } from './profile-user/profile-user.module';
+import { MaterialModule } from './material-module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FootertopComponent,
-    FooterbottomComponent,
-    SignInComponent,
-    SignUpComponent,
-  ],
   imports: [
     BrowserModule,
     RouterModule,
@@ -40,13 +32,23 @@ import { ProductDetailModule } from './product-detail/product-detail.module';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    CarouselModule,
     HomeModule,
     ShopModule,
     CartModule,
     CheckoutModeule,
     AuthRoutingModule,
     ProductDetailModule,
+    ProfileModule,
+    MaterialModule,
+  ],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FootertopComponent,
+    FooterbottomComponent,
+    SignInComponent,
+    SignUpComponent,
+    HeaderComponent,
   ],
   providers: [fakeBackendProvider],
   bootstrap: [AppComponent],

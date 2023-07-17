@@ -5,9 +5,9 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
+import { IUser } from 'src/app/auth.model';
+import { AuthService } from 'src/app/auth.service';
 import { Product } from 'src/app/product.model';
-
-const key = 'infor-checkout';
 
 @Component({
   selector: 'app-billing',
@@ -19,21 +19,22 @@ export class BillingDetailsComponent implements OnInit {
   submitted = false;
   products: Product[] = [];
   loading = false;
+  user: IUser | null;
 
   @Input() product!: any[];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {
+    this.user = this.authService.userValue;
     this.getDataFrLocalStorage();
   }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
       country: ['', Validators.required],
-      name: new FormControl('', [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250),
-      ]),
+      name: new FormControl('', [Validators.required]),
       address: ['', Validators.required],
       city: ['', Validators.required],
       postcode: ['', Validators.required],
@@ -48,17 +49,24 @@ export class BillingDetailsComponent implements OnInit {
   get f() {
     return this.form.controls;
   }
-  onSubmit() {
-    JSON.parse(localStorage.getItem(key)!) || [];
+  submitInfor() {
+    const a = JSON.parse(localStorage.getItem('order' + this.user?.id)!) || [];
     const ifCheckout = this.form.value;
-    console.log('ifCheckout', ifCheckout);
-    localStorage.setItem(key, JSON.stringify(ifCheckout));
+    ifCheckout.id = a.length
+      ? Math.max(...a.map((x: { id: number }) => x.id)) + 1
+      : 1;
+    a.push(ifCheckout);
+    localStorage.setItem('order' + this.user?.id, JSON.stringify(a));
   }
-  getDataFrLocalStorage() {
-    this.products = JSON.parse(localStorage.getItem('cart')!);
+  getDataFrLocalStorage(): void {
+    const key = 'cart' + this.user?.id;
+    this.products = JSON.parse(localStorage.getItem(key)! || '[]');
+    console.log('this.products', this.products, key);
   }
   totalAmount() {
-    const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+    const cartItems = JSON.parse(
+      localStorage.getItem('cart' + this.user?.id)! || '[]'
+    );
     const totalAmounts = cartItems.reduce(
       (sum: number, product: { price: number; quantity: number }) =>
         sum + product.price * product.quantity,

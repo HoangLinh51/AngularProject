@@ -8,7 +8,6 @@ import { ProductService } from 'src/app/product.service';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent {
-  productList: Product[] = [];
   constructor() {}
 
   ngOnInit(): void {}

@@ -16,3 +16,17 @@ export interface IProductList {
   skip: number;
   limit: number;
 }
+
+export class Order {
+  id!: number;
+  address!: string;
+  city!: string;
+  country!: string;
+  email!: string;
+  name!: string;
+  payment!: string;
+  phone!: string;
+  postcode!: string;
+  product!: Product[];
+  totalAmount!: number;
+}

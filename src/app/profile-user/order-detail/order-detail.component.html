@@ -1,0 +1,126 @@
+<div class="main-container container">
+  <br>
+  <div class="row">
+    <div id="content" class="col-sm-9">
+      <h2 class="title">Order Information</h2>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td colspan="2" class="text-left">Order Details</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="width: 50%;" class="text-left"> <b>Order ID:</b>{{orders.id}}
+              <br>
+              <b>Date Added:</b> 20/06/2016
+            </td>
+            <td style="width: 50%;" class="text-left"> <b>Payment Method:</b>{{orders.payment}}
+              <br>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td style="width: 50%; vertical-align: top;" class="text-left"></td>
+            <td style="width: 50%; vertical-align: top;" class="text-left"><b> Shipping Address</b></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-left">Name
+              <br>Country
+              <br>Town/City
+              <br>Address
+              <br>Phone
+              <br>Email
+              <br>Postcode
+            </td>
+            <td class="text-left">{{orders.name}}
+              <br>{{orders.country}}
+              <br>{{orders.city}}
+              <br>{{orders.address}}
+              <br>{{orders.phone}}
+              <br>{{orders.email}}
+              <br>{{orders.postcode}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <td class="text-left">Product Name</td>
+              <td class="text-left">Brand</td>
+              <td class="text-left">Category</td>
+              <td class="text-right">Quantity</td>
+              <td class="text-right">Price</td>
+              <td class="text-right">Total</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of orders.product">
+              <td class="text-left">{{product.title}} </td>
+              <td class="text-left">{{product.brand}}</td>
+              <td class="text-left">{{product.category}}</td>
+              <td class="text-right">{{product.quantity}}</td>
+              <td class="text-right">${{product.price}}</td>
+              <td class="text-right">${{product.price * product.quantity}}</td>
+            </tr>
+          </tbody>
+
+          <tfoot>
+            <tr>
+              <td></td>
+              <td colspan="3"></td>
+              <td class="text-right"><b>Sub-Total</b></td>
+              <td class="text-right">${{orders.totalAmount}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td colspan="3"></td>
+              <td class="text-right"><b>SHIPPING AND HANDLING</b></td>
+              <td class="text-right">$10</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td colspan="3"></td>
+              <td class="text-right"><b>Total</b></td>
+              <td class="text-right">${{orders.totalAmount + 10}}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <h3>Order Status</h3>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td class="text-left">Date Added</td>
+            <td class="text-left">Status</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-left">20/06/2016</td>
+            <td class="text-left">Processing</td>
+          </tr>
+          <tr>
+            <td class="text-left">21/06/2016</td>
+            <td class="text-left">Shipped</td>
+          </tr>
+          <tr>
+            <td class="text-left">24/06/2016</td>
+            <td class="text-left">Complete</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="buttons clearfix">
+        <div class="pull-right"><a class="btn btn-primary" routerLink="/profile">Continue</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
