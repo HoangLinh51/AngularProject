@@ -8,14 +8,9 @@ import { ProductService } from 'src/app/product.service';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent {
+  @Input() product: Product = new Product();
+
   constructor() {}
 
   ngOnInit(): void {}
-
-  @Input() product: Product = new Product();
-
-  @Output() newItemEvent = new EventEmitter<string>();
-  addNewItem(value: string) {
-    this.newItemEvent.emit(value);
-  }
 }

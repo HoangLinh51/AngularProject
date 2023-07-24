@@ -33,8 +33,6 @@ export class ProductDetailComponent {
       .subscribe((product: any) => {
         this.productDetail = product;
         this.getProductCategory(this.productDetail.category);
-        // console.log('category-product', this.productDetail.category);
-        // console.log('detail-product', this.productDetail);
       });
   }
 
@@ -50,7 +48,6 @@ export class ProductDetailComponent {
   getProductCategory(category: string) {
     this.productService.getProductByCategory(category).subscribe((res: any) => {
       this.procategory = res.products;
-      // console.log('product-similiar------>:', this.procategory);
     });
   }
 }

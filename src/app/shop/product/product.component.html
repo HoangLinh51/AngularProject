@@ -1,15 +1,17 @@
 <div class="col-md-3 col-sm-6 single-product">
   <div class="single-shop-product">
     <form [formGroup]="form" (ngSubmit)="addToCart()">
-      <div class="product-upper">
-        <img [src]="productco.images[0]" alt="">
-      </div>
-      <h2><a [routerLink]="['/shop/', productco.id]">{{productco.title}}</a></h2>
-      <div class="product-carousel-price">
-        {{productco.price}}
-      </div>
+      <a [routerLink]="['/shop/', productco.id]">
+        <div class="product-upper">
+          <img [src]="productco.images[0]" alt="">
+        </div>
+        <h2>{{productco.title}}</h2>
+        <div class="product-carousel-price">
+          ${{productco.price}}
+        </div>
+      </a>
       <div class="product-option-shop">
-        <button type="submit" href="/canvas/shop/?add-to-cart=70">Add to cart</button>
+        <button type="submit" >Add to cart</button>
       </div>
     </form>
   </div>

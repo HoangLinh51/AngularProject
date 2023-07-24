@@ -10,9 +10,10 @@ import { Product } from '../../product.model';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
-  productList: Product[] = [];
   form!: FormGroup;
   user: IUser | null;
+
+  @Input() productco: Product = new Product();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,27 +29,20 @@ export class ProductComponent implements OnInit {
     this.addToCart;
   }
 
-  @Input() productco: Product = new Product();
-
-  @Output() newItemEvent = new EventEmitter<string>();
-  addNewItem(value: string) {
-    this.newItemEvent.emit(value);
-  }
   get f() {
     return this.form.controls;
   }
+
   addToCart() {
-    // debugger;
     let productstorage =
       JSON.parse(localStorage.getItem('cart' + this.user?.id)!) || [];
     const product = this.f.product.value;
-
+    console.log('123', product);
     let abc = false;
     for (let i = 0; i < productstorage.length; ++i) {
       const c = productstorage[i];
       if (c.id === product.id) {
         productstorage[i].quantity += 1;
-        // console.log('product=-------', productstorage[i]);
         abc = true;
       }
     }

@@ -8,10 +8,9 @@ import { ProductService } from 'src/app/product.service';
   styleUrls: ['./recently-viewed.component.css'],
 })
 export class RecentlyViewedComponent {
-  productList: Product[] = [];
+  @Input() productco: Product = new Product();
+
   constructor() {}
 
   ngOnInit(): void {}
-
-  @Input() productco: Product = new Product();
 }

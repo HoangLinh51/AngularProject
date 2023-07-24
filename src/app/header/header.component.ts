@@ -12,7 +12,6 @@ export class HeaderComponent {
 
   constructor(private authService: AuthService) {
     this.authService.user.subscribe((x) => (this.user = x));
-    // console.log('this.user--------', this.user);
   }
 
   logout() {

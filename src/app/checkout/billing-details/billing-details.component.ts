@@ -5,6 +5,7 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IUser } from 'src/app/auth.model';
 import { AuthService } from 'src/app/auth.service';
 import { Product } from 'src/app/product.model';
@@ -25,7 +26,8 @@ export class BillingDetailsComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.user = this.authService.userValue;
     this.getDataFrLocalStorage();
@@ -49,20 +51,28 @@ export class BillingDetailsComponent implements OnInit {
   get f() {
     return this.form.controls;
   }
+
   submitInfor() {
     const a = JSON.parse(localStorage.getItem('order' + this.user?.id)!) || [];
     const ifCheckout = this.form.value;
+    console.log('123123', this.form.invalid);
+    if (this.form.invalid) {
+      return;
+    }
     ifCheckout.id = a.length
       ? Math.max(...a.map((x: { id: number }) => x.id)) + 1
       : 1;
     a.push(ifCheckout);
     localStorage.setItem('order' + this.user?.id, JSON.stringify(a));
+    this.router.navigate(['/profile']);
   }
+
   getDataFrLocalStorage(): void {
     const key = 'cart' + this.user?.id;
     this.products = JSON.parse(localStorage.getItem(key)! || '[]');
     console.log('this.products', this.products, key);
   }
+
   totalAmount() {
     const cartItems = JSON.parse(
       localStorage.getItem('cart' + this.user?.id)! || '[]'

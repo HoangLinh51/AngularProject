@@ -11,8 +11,7 @@ import { ProductService } from 'src/app/product.service';
 export class SimiliarProductComponent {
   @Input() productco: Product = new Product();
 
-  productcate: Product[] = [];
-  constructor(private productService: ProductService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 }

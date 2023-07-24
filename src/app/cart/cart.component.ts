@@ -55,7 +55,6 @@ export class CartComponent {
     const uData = this.dataFromStorage.filter(
       (product) => product.id !== this.receivedData
     );
-
     localStorage.setItem('cart' + this.user?.id, JSON.stringify(uData));
     const storageData = localStorage.getItem('cart' + this.user?.id);
     if (storageData) {

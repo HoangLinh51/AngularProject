@@ -2,7 +2,6 @@
 Author: Colorlib
 Link URL: https://codepen.io/colorlib/pen/aaaoVJ
 --*/
-
 h1 {
   font-size: 3em;
   text-align: center;
@@ -17,7 +16,7 @@ h1 {
 }
 .main-agileinfo {
   width: 35%;
-  margin: 3em ;
+  margin: 3em auto;
   background: rgba(0, 0, 0, 0.18);
   background-size: cover;
 }
@@ -25,8 +24,8 @@ h1 {
 .agileits-top {
   padding: 3em;
 }
-input[type="text"],
 
+input[type="text"],
 input[type="password"] {
   font-size: 0.9em;
   color: rgb(0, 0, 0);

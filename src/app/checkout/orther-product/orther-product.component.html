@@ -1,7 +1,9 @@
 <div class="single-sidebar">
-  <div class="thubmnail-recent">
-    <img [src]="product.images[0 ]" class="recent-thumb" alt="">
-    <h2><a routerLink="single-product.html">{{product.title}}</a></h2>
+  <div class="thubmnail-recent" [routerLink]="['/shop/', product.id]">
+    <a>
+      <img [src]="product.images[0 ]" class="recent-thumb" alt="">
+      <h4>{{product.title}}</h4>
+    </a>
     <div class="product-sidebar-price">
       <ins>${{product.price}}</ins>
     </div>

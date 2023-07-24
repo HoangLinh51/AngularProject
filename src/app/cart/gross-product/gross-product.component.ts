@@ -23,6 +23,7 @@ export class GrossProductComponent {
   removeItem() {
     this.sendData.emit(this.productco.id);
   }
+
   onChangeQuantity() {
     let productstorage = JSON.parse(
       localStorage.getItem('cart' + this.user?.id)!

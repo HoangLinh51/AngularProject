@@ -9,6 +9,7 @@ import { OrtherProductComponent } from '../checkout/orther-product/orther-produc
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     CarouselModule,
     NgxPaginationModule,
     ReactiveFormsModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [],

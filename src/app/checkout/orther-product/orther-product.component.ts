@@ -8,10 +8,9 @@ import { ProductService } from 'src/app/product.service';
   styleUrls: ['./orther-product.component.css'],
 })
 export class OrtherProductComponent {
-  productList: Product[] = [];
+  @Input() product: Product = new Product();
+
   constructor() {}
 
   ngOnInit(): void {}
-
-  @Input() product: Product = new Product();
 }

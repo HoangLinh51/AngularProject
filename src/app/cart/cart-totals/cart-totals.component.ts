@@ -14,6 +14,7 @@ export class CartTotalsComponent {
 
   @Input() productco: Product = new Product();
   @Output() totalAmounts = new EventEmitter<number>();
+
   constructor(private authService: AuthService) {
     this.user = this.authService.userValue;
   }

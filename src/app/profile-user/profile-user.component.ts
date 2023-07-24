@@ -26,8 +26,11 @@ export class ProfileUserComponent {
   }
   ngOnInit() {
     this.form = this.formBuilder.group({
+      id: [this.user?.id],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      username: [this.user?.username],
+      token: [this.user?.token],
     });
   }
   get f() {

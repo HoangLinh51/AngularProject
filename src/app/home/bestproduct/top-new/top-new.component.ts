@@ -7,9 +7,9 @@ import { Product } from 'src/app/product.model';
   styleUrls: ['./top-new.component.css'],
 })
 export class TopNewComponent {
+  @Input() productco: Product = new Product();
+
   constructor() {}
 
   ngOnInit(): void {}
-
-  @Input() productco: Product = new Product();
 }

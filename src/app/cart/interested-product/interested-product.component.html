@@ -1,25 +1,12 @@
-<div class="cross-sells">
-  <h2>You may be interested in...</h2>
-  <ul class="products">
-    <li class="product">
-      <a routerLink="single-product.html">
-        <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image"
-          src="/assets/img/product-2.jpg">
-        <h3>MacBook pro 14' 2020</h3>
-        <span class="price"><span class="amount"><ins>$1200.00</ins> <del>$1355.00</del></span></span>
-      </a>
-      <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow"
-        routerLink="single-product.html">Select options</a>
-    </li>
-    <li class="product">
-      <a routerLink="single-product.html">
-        <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image"
-          src="/assets/img/product-4.jfif">
-        <h3>Playtation-5</h3>
-        <span class="price"><span class="amount"><ins>$400.00</ins> <del>$425.00</del></span></span>
-      </a>
-      <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow"
-        routerLink="single-product.html">Select options</a>
-    </li>
-  </ul>
-</div>
+<ul class="products">
+  <li class="product">
+    <a [routerLink]="['/shop/', productco.id]">
+      <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image"
+        [src]="productco.images[0]">
+      <h3>{{productco.title}}</h3>
+      <span class="price"><span class="amount"><ins>${{productco.price}}</ins> </span></span>
+    </a>
+    <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow"
+      >Select options</a>
+  </li>
+</ul>

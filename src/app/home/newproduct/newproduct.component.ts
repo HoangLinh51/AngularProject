@@ -11,16 +11,12 @@ export class NewproductComponent {
   allProduct: number = 0;
   pagination: number = 1;
   pagesize: number = 8;
-  // datas: any;
   datas: Product[] = [];
 
-  constructor(
-    private productService: ProductService // private categoryService: CategoryService
-  ) {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.getAllproduct();
-    // this.getAllcategories();
   }
 
   getAllproduct() {
@@ -29,7 +25,6 @@ export class NewproductComponent {
       .subscribe((res: any) => {
         this.datas = res.products;
         this.allProduct = res.total;
-        // console.log('datas------>:', this.datas);
       });
   }
   renderPage(event: number) {

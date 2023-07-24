@@ -13,9 +13,7 @@ export class CheckoutComponent {
   pagesize: number = 5;
   datas: Product[] = [];
 
-  constructor(private productService: ProductService) {
-    // this.getDataFrLocalStorage();
-  }
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.getAllproduct();

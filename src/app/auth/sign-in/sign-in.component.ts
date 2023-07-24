@@ -30,18 +30,13 @@ export class SignInComponent implements OnInit {
     });
   }
 
-  // convenience getter for easy access to form fields
   get f() {
     return this.form.controls;
   }
 
   onSubmit() {
     this.submitted = true;
-
-    // reset alerts on submit
     this.alertService.clear();
-
-    // stop here if form is invalid
     if (this.form.invalid) {
       return;
     }
@@ -52,10 +47,8 @@ export class SignInComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: () => {
-          // get return url from query parameters or default to home page
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
           this.router.navigateByUrl(returnUrl);
-          // console.log('f.value----->',this.f.username.value,this.f.password.value);
         },
         error: (error) => {
           this.alertService.error(error);

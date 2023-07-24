@@ -8,6 +8,7 @@ import { ProductDetailComponent } from './product-detail.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,13 @@ import { RouterModule } from '@angular/router';
     SimiliarProductComponent,
     ProductDetailComponent,
   ],
-  imports: [CommonModule, NgxPaginationModule, RouterModule, BrowserModule],
+  imports: [
+    CommonModule,
+    NgxPaginationModule,
+    RouterModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class ProductDetailModule {}

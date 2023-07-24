@@ -3,13 +3,15 @@
   <td class="product-remove">
     <button type="submit" (click)="removeItem()"><i class="fa-solid fa-xmark"></i></button>
   </td>
+  <a [routerLink]="['/shop/', productco.id]" >
   <td class="product-thumbnail">
-    <a routerLink="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail"
-        [src]="productco.images[0]"></a>
+    <img width="145" height="145" alt="poster_1_up" class="shop_thumbnail"
+        [src]="productco.images[0]">
   </td>
   <td class="product-name">
-    <a routerLink="single-product.html">{{productco.title}}</a>
+    {{productco.title}}
   </td>
+</a>
   <td class="product-price">
     <span class="amount">${{productco.price}}</span>
   </td>

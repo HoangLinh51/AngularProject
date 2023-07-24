@@ -1,10 +1,12 @@
 <ng-container *ngIf="productco.id">
   <div class="single-sidebar">
     <div class="thubmnail-recent">
+      <a  [routerLink]="['/shop/', productco.id]">
       <img src={{productco.images[0]}} class="recent-thumb" alt="">
-      <h2><a [routerLink]="['/shop/', productco.id]">{{productco.title}}</a></h2>
+      <h4>{{productco.title}}</h4>
+    </a>
       <div class="product-sidebar-price">
-        {{productco.price}}
+        ${{productco.price}}
       </div>
     </div>
   </div>

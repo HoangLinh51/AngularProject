@@ -36,7 +36,6 @@ export class ShopComponent {
     this.productService.getAll(this.page).subscribe((res: any) => {
       this.datas = res.products;
       this.totalproduct = res.total;
-      // console.log('datas------>:', this.datas);
     });
   }
 
@@ -59,7 +58,6 @@ export class ShopComponent {
     this.productService.searchProduct(keyword, page).subscribe((res: any) => {
       this.datas = res.products;
       this.totalproduct = res.total;
-      // console.log('res', res);
     });
   }
 

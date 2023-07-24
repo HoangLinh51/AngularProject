@@ -15,7 +15,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <app-search></app-search>
+        <!-- <app-search></app-search> -->
         <h2 class="sidebar-title">Orther Product</h2>
         <app-orther *ngFor="let product of datas | paginate:{currentPage: pagination, itemsPerPage: 5, totalItems: allProduct} " [product]="product"></app-orther>
       </div>

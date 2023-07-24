@@ -36,13 +36,27 @@
                 <button type="submit" class="profile-edit-btn" name="btnAddMore">Edit Profile</button>
               </form>
             </mat-tab>
-
             <mat-tab label="History Order">
-              <mat-selection-list class="tab-title"  *ngFor="let order of orders" [order]="order">
-
-                <a [routerLink]="['order/', order.id]" >{{order.id}} - {{order.name}} - {{order.address}} - {{order.payment}}</a>
-
-              </mat-selection-list>
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <td class="text-center"><b>Order ID</b> </td>
+                    <td class="text-center"><b>Name</b></td>
+                    <td class="text-center"><b>Country</b></td>
+                    <td class="text-center"><b>Address</b></td>
+                    <td class="text-center"><b>Total</b></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let order of orders" [order]="order" [routerLink]="['order/', order.id]">
+                    <td class="text-center">{{order.id}}</td>
+                    <td class="text-center">{{order.name}}</td>
+                    <td class="text-center">{{order.country}}</td>
+                    <td class="text-center">{{order.address}}</td>
+                    <td class="text-center">${{order.totalAmount}}</td>
+                  </tr>
+                </tbody>
+              </table>
             </mat-tab>
           </ul>
         </mat-tab-group>

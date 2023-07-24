@@ -7,9 +7,11 @@ import { Product } from 'src/app/product.model';
   styleUrls: ['./orther-product.component.css'],
 })
 export class OrtherProductComponent {
-  constructor() {}
+  @Input() product: Product = new Product();
+
+  constructor() {
+    console.log(this.product);
+  }
 
   ngOnInit(): void {}
-
-  @Input() product: Product = new Product();
 }

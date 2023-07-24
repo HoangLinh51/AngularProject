@@ -11,6 +11,7 @@ import { CartTotalsComponent } from './cart-totals/cart-totals.component';
 import { CartComponent } from './cart.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     OrtherProductComponent,
   ],
   imports: [
+    RouterModule,
     FormsModule,
     BrowserModule,
     NgOptimizedImage,

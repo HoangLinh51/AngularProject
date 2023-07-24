@@ -18,7 +18,6 @@ export class AuthGuard implements CanActivate {
 
   constructor(private authService: AuthService, private router: Router) {
     this.authService.user.subscribe((x) => (this.user = x));
-    // console.log('this.user--------', this.user);
   }
 
   canActivate(
@@ -32,13 +31,3 @@ export class AuthGuard implements CanActivate {
     return true;
   }
 }
-// {
-//   if ((this.isAuthorized = true)) {
-//     return true;
-//   } else {
-//     this.router.navigate(['/signin'], {
-//       queryParams: { returnUrl: state.url },
-//     });
-//     return false;
-//   }
-// }

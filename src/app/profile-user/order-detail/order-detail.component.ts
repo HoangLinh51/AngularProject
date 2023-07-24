@@ -33,6 +33,7 @@ export class OrderDetailComponent {
         this.orders = order;
       });
   }
+
   getOrderById(id: number) {
     const orders: Order[] =
       JSON.parse(localStorage.getItem('order' + this.user?.id)!) || [];
