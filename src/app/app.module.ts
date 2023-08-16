@@ -22,6 +22,7 @@ import { RouterModule } from '@angular/router';
 import { ProductDetailModule } from './product-detail/product-detail.module';
 import { ProfileModule } from './profile-user/profile-user.module';
 import { MaterialModule } from './material-module';
+import { PostModule } from './posts/post.module';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { MaterialModule } from './material-module';
     ProductDetailModule,
     ProfileModule,
     MaterialModule,
+    PostModule,
   ],
   declarations: [
     AppComponent,

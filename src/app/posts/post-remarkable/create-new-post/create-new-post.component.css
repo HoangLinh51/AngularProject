@@ -1,0 +1,22 @@
+button {
+  background: none repeat scroll 0 0 #1abc9c;
+  border: medium none;
+  color: #fff;
+  padding: 11px 20px;
+  text-transform: uppercase;
+}
+a{
+  color: white;
+}
+input{
+  width: 100%;
+}
+
+.invalid-feedback{
+  color: red
+}
+button{
+  list-style-type: none;
+  width: 100px;
+}
+

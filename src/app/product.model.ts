@@ -1,3 +1,10 @@
+export interface IProductList {
+  products: Product[];
+  total: number;
+  skip: number;
+  limit: number;
+}
+
 export class Product {
   id!: number;
   title!: string;
@@ -8,13 +15,6 @@ export class Product {
   brand!: string;
   quantity!: number;
   totalAmount!: number;
-}
-
-export interface IProductList {
-  products: Product[];
-  total: number;
-  skip: number;
-  limit: number;
 }
 
 export class Order {

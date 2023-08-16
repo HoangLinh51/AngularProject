@@ -55,7 +55,6 @@ export class BillingDetailsComponent implements OnInit {
   submitInfor() {
     const a = JSON.parse(localStorage.getItem('order' + this.user?.id)!) || [];
     const ifCheckout = this.form.value;
-    console.log('123123', this.form.invalid);
     if (this.form.invalid) {
       return;
     }

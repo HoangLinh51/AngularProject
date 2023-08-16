@@ -1,0 +1,31 @@
+<div class="col-md-8">
+  <div class="product-content-right">
+    <div class="woocommerce">
+      <div>
+        <button [routerLink]="['new']">New Post</button>
+      </div>
+      <br>
+      <div class="blog-content">
+        <div class="list-article-content blog-posts">
+          <div class="blog-post row"  *ngFor="let post of postNew" >
+            <div class="col-md-4 col-xs-12 col-sm-12">
+                <p>{{post.image}}</p>
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-12">
+              <h3 class="blog-post-title">
+               {{post.title}}
+              </h3>
+              <div class="blog-post-meta">
+                <span class="author vcard">Writer: {{post.name}}</span>
+                <span class="date">
+                  <time pubdate="" datetime="2019-06-11">11.06.2022</time>
+                </span>
+              </div>
+             <p>{{post.product}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

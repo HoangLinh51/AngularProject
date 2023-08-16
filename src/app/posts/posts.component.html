@@ -1,0 +1,17 @@
+<div class="single-product-area">
+  <div class="zigzag-bottom"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="single-sidebar">
+          <h2 class="sidebar-title">New</h2>
+          <app-post-new *ngFor="let posts of post" [postco]="posts"></app-post-new>
+    <div class="d-flex justify-content-center">
+      <pagination-controls (pageChange)="renderPage($event)"></pagination-controls>
+    </div>
+        </div>
+      </div>
+      <app-post-remarkable></app-post-remarkable>
+    </div>
+  </div>
+</div>

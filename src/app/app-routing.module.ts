@@ -5,6 +5,8 @@ import { AuthGuard } from './auth.guard';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { HomeComponent } from './home/home.component';
+import { CreateNewPostComponent } from './posts/post-remarkable/create-new-post/create-new-post.component';
+import { PostsComponent } from './posts/posts.component';
 import { OrderDetailComponent } from './profile-user/order-detail/order-detail.component';
 import { ProfileUserComponent } from './profile-user/profile-user.component';
 
@@ -37,6 +39,14 @@ const routes: Routes = [
   {
     path: 'profile/order/:id',
     component: OrderDetailComponent,
+  },
+  {
+    path: 'post',
+    component: PostsComponent,
+  },
+  {
+    path: 'post/new',
+    component: CreateNewPostComponent,
   },
 ];
 

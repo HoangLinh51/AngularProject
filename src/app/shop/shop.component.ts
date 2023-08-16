@@ -26,6 +26,7 @@ export class ShopComponent {
       search: ['', Validators.required],
     });
     this.getlist('', 1);
+    this.getAllproduct();
   }
 
   get f() {
@@ -36,6 +37,7 @@ export class ShopComponent {
     this.productService.getAll(this.page).subscribe((res: any) => {
       this.datas = res.products;
       this.totalproduct = res.total;
+      console.log(this.datas);
     });
   }
 
