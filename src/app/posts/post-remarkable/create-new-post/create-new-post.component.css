@@ -19,4 +19,13 @@ button{
   list-style-type: none;
   width: 100px;
 }
+textarea{
+  width: 100%;
+}
+.invalid-message{
+  color: red;
+}
+form .ng-invalid.ng-touched {
+  border-color: #e66262;
+}
 

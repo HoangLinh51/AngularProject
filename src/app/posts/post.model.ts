@@ -18,5 +18,5 @@ export class PostNew {
   product!: string;
   email!: string;
   image!: string;
-  title!: string;
+  body!: string;
 }

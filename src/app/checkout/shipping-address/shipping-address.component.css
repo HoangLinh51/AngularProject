@@ -1,0 +1,19 @@
+ul{
+  list-style-type: none;
+}
+.invalid-feedback{
+  color: red
+}
+span{
+  color: #444;
+  margin-bottom: 0;
+  margin-right: 10px;
+  font-size: 15px;
+}
+.invalid-message{
+  color: red;
+}
+
+form .ng-invalid.ng-touched {
+  border-color: #e66262;
+}

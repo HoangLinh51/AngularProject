@@ -13,7 +13,7 @@
   </td>
 </a>
   <td class="product-price">
-    <span class="amount">${{productco.price}}</span>
+    <span class="amount">{{productco.price | currency: 'USD'}}</span>
   </td>
   <td class="product-quantity">
     <div class="quantity buttons_added">
@@ -22,7 +22,7 @@
     </div>
   </td>
   <td class="product-subtotal">
-    <span class="amount">${{productco.price * productco.quantity}}</span>
+    <span class="amount">{{productco.price * productco.quantity | currency: 'USD'}}</span>
   </td>
 </tr>
 </ng-container>

@@ -23,7 +23,7 @@
         <form  >
           <h2 class="product-name">{{product.title}} </h2>
           <div class="product-inner-price">
-            {{product.price}}
+            {{product.price | currency: 'USD'}}
           </div>
           <div class="quantity">
             <input type="number" class="input-text qty text" [(ngModel)]="quantity" name="quantity" min="1" max="4"

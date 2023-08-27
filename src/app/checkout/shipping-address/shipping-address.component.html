@@ -6,8 +6,7 @@
         <h3>Shipping Addres</h3>
         <div>
           <label class="" for="billing_country">Country</label>
-          <select class="country_to_state country_select" formControlName="country"
-            [ngClass]="{'is-invalid': submitted && f.country.errors}">
+          <select class="country_to_state country_select" formControlName="country">
             <option value="">Select a country…</option>
             <option value="Islands">Islands</option>
             <option value="Argentina">Argentina</option>
@@ -67,81 +66,63 @@
             <option value="Zambia">Zambia</option>
             <option value="Zimbabwe">Zimbabwe</option>
           </select>
-          <div *ngIf="{'is-invalid': submitted && f.country.errors }" class="invalid-feedback">
-            <div *ngIf="f.country.errors?.['required']">
-              This country is required.
-            </div>
-          </div>
+          <ng-container *ngIf="f.country.invalid && f.country.touched">
+            <div class="invalid-message"> This country is required.</div>
+          </ng-container>
         </div>
         <br>
 
         <div>
           <label>Name: </label>
-          <input type="text" formControlName="name" placeholder="Your name"
-            [ngClass]="{'is-invalid': submitted && f.name.errors }">
-          <div *ngIf="{'is-invalid': submitted && f.name.errors }" class="invalid-feedback">
-            <div *ngIf="f.name.errors?.['required']">
-              This name is required.
-            </div>
-          </div>
+          <input type="text" formControlName="name" placeholder="Your name">
+          <ng-container *ngIf="f.name.invalid && f.name.touched">
+            <div class="invalid-message">This name is required.</div>
+          </ng-container>
         </div>
-
         <br>
+
         <div>
           <label class="" for="billing_address">Address </label>
-          <input type="text" placeholder="Street address" formControlName="address"
-            [ngClass]="{'is-invalid': submitted && f.address.errors}">
-          <div *ngIf="{'is-invalid': submitted && f.address.errors }" class="invalid-feedback">
-            <div *ngIf="f.address.errors?.['required']">
-              This address is required.
-            </div>
-          </div>
+          <input type="text" placeholder="Street address" formControlName="address">
+          <ng-container *ngIf="f.address.invalid && f.address.touched">
+            <div class="invalid-message">This address is required.</div>
+          </ng-container>
         </div>
         <br>
+
         <div>
           <label class="" for="billing_city">Town / City </label>
-          <input type="text" placeholder="Town / City" formControlName="city"
-            [ngClass]="{'is-invalid': submitted && f.city.errors}">
-          <div *ngIf="{'is-invalid': submitted && f.city.errors }" class="invalid-feedback">
-            <div *ngIf="f.city.errors?.['required']">
-              This city is required.
-            </div>
-          </div>
+          <input type="text" placeholder="Town / City" formControlName="city">
+          <ng-container *ngIf="f.city.invalid && f.city.touched">
+            <div class="invalid-message">This city is required.</div>
+          </ng-container>
         </div>
         <br>
 
         <div>
           <label class="" for="billing_postcode">Postcode</label>
-          <input type="text" placeholder="Postcode / Zip" formControlName="postcode"
-            [ngClass]="{'is-invalid': submitted && f.postcode.errors}">
-          <div *ngIf="{'is-invalid': submitted && f.postcode.errors }" class="invalid-feedback">
-            <div *ngIf="f.postcode.errors?.['required']">
-              This postcode is required.
-            </div>
-          </div>
+          <input type="text" placeholder="Postcode / Zip" formControlName="postcode">
+          <ng-container *ngIf="f.postcode.invalid && f.postcode.touched">
+            <div class="invalid-message">This postcode is required.</div>
+          </ng-container>
         </div>
-
         <br>
+
         <div>
           <label class="" for="billing_email">Email Address </label>
-          <input type="text" placeholder="" formControlName="email"
-            [ngClass]="{'is-invalid': submitted && f.email.errors}">
-          <div *ngIf="{'is-invalid': submitted && f.email.errors }" class="invalid-feedback">
-            <div *ngIf="f.email.errors?.['required']">
-              This email is required.
-            </div>
-          </div>
+          <input type="text" placeholder="Email" formControlName="email">
+          <ng-container *ngIf="f.email.invalid && f.email.touched">
+            <div class="invalid-message">This email is required.</div>
+          </ng-container>
         </div>
         <br>
+
         <div>
           <label class="" for="billing_phone">Phone </label>
-          <input type="text" placeholder="" formControlName="phone"
-            [ngClass]="{'is-invalid': submitted && f.phone.errors}">
-          <div *ngIf="{'is-invalid': submitted && f.phone.errors }" class="invalid-feedback">
-            <div *ngIf="f.phone.errors?.['required']">
-              This phone is required.
-            </div>
-          </div>
+          <input type="text" placeholder="Number Phone" formControlName="phone">
+          <ng-container *ngIf="f.phone.invalid && f.phone.touched">
+            <div class="invalid-message">This phone is required.</div>
+          </ng-container>
         </div>
       </div>
     </div>
@@ -149,6 +130,7 @@
 
   <h3 id="order_review_heading">Your order</h3>
   <div id="order_review" style="position: relative;">
+
     <table class="shop_table">
       <thead>
         <tr>
@@ -163,7 +145,7 @@
             <td class="product-name">
               {{product.title}}<strong class="product-quantity"> × {{product.quantity}}</strong> </td>
             <td class="product-total">
-              <span class="amount">${{product.price * product.quantity}}</span>
+              <span class="amount">{{product.price * product.quantity | currency: 'USD'}}</span>
             </td>
           </tr>
         </ng-container>
@@ -172,7 +154,7 @@
       <tfoot>
         <tr class="cart-subtotal">
           <th>Cart Subtotal</th>
-          <td>${{totalAmount()}}</td>
+          <td>{{totalAmount() | currency: 'USD'}}</td>
         </tr>
         <tr class="shipping">
           <th>Shipping and Handling</th>
@@ -184,33 +166,39 @@
         </tr>
         <tr class="order-total">
           <th>Order Total</th>
-          <td type="number"><strong>${{totalAmount()}}</strong> </td>
+          <td type="number"><strong>{{totalAmount() | currency: 'USD'}}</strong> </td>
         </tr>
       </tfoot>
+
     </table>
 
     <div class="payment">
       <h3 class="order_review_heading">Payment methods</h3>
-      <select class="payment_methods methods" formControlName="payment"
-        [ngClass]="{'is-invalid': submitted && f.payment}">
 
-        <option value="">Select a payment method</option>
-        <option value="cash"> Cash</option>
-        <option value="banking"> Direct Bank Transfer </option>
-        <option value="paypal"> Paypay</option>
-      </select>
-      <div *ngIf="{'is-invalid': submitted && f.payment.errors }" class="invalid-feedback">
-        <div *ngIf="f.payment.errors?.['required']">
-          This Payment methods is required.
-        </div>
-      </div>
+      <label class="payment-method">
+        <input type="radio" formControlName="payment" value="cash" ngModel />
+        <span>Cash</span>
+      </label>
 
-      <div class="clear"></div>
+      <label class="payment-method">
+        <input type="radio" formControlName="payment" value="banking" ngModel />
+        <span>Direct Bank Transfer</span>
+      </label>
+
+      <label class="payment-method">
+        <input type="radio" formControlName="payment" value="paypal" ngModel />
+        <span>Paypal</span>
+      </label>
+
+      <ng-container *ngIf="f.payment.invalid && f.payment.touched">
+        <div class="invalid-message">This payment is required.</div>
+      </ng-container>
+
     </div>
     <div class="form-row place-order">
       <button type="submit" [disabled]="loading" class="btn btn-primary">
-      Order
-    </button>
+        Order
+      </button>
     </div>
   </div>
 </form>

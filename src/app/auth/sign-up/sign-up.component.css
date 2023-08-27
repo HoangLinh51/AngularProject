@@ -48,4 +48,9 @@ input.text.w3lpass {
   margin: 2em 0;
 }
 
-
+.invalid-message{
+  color: red;
+}
+form .ng-invalid.ng-touched {
+  border-color: #e66262;
+}

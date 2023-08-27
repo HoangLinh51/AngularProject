@@ -1,7 +1,0 @@
-<div class="single-sidebar" >
-  <h2 class="sidebar-title">Search Products</h2>
-  <form [formGroup]="form" (ngSubmit)="search()">
-    <input type="text" formControlName ="search"  [ngClass]="{'is-invalid': submitted && f.search}" placeholder="Search" >
-    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-  </form>
-</div>

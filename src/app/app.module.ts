@@ -23,6 +23,10 @@ import { ProductDetailModule } from './product-detail/product-detail.module';
 import { ProfileModule } from './profile-user/profile-user.module';
 import { MaterialModule } from './material-module';
 import { PostModule } from './posts/post.module';
+import { ContactComponent } from './contact/contact.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { environment } from 'src/environment/environment';
 
 @NgModule({
   imports: [
@@ -42,6 +46,8 @@ import { PostModule } from './posts/post.module';
     ProfileModule,
     MaterialModule,
     PostModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
   ],
   declarations: [
     AppComponent,
@@ -51,6 +57,7 @@ import { PostModule } from './posts/post.module';
     SignInComponent,
     SignUpComponent,
     HeaderComponent,
+    ContactComponent,
   ],
   providers: [fakeBackendProvider],
   bootstrap: [AppComponent],

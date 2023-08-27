@@ -7,7 +7,7 @@
         </div>
         <h2>{{productco.title}}</h2>
         <div class="product-carousel-price">
-          ${{productco.price}}
+          {{productco.price | currency: 'USD'}}
         </div>
       </a>
       <div class="product-option-shop">

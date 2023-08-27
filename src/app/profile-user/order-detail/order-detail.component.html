@@ -67,8 +67,8 @@
               <td class="text-left">{{product.brand}}</td>
               <td class="text-left">{{product.category}}</td>
               <td class="text-right">{{product.quantity}}</td>
-              <td class="text-right">${{product.price}}</td>
-              <td class="text-right">${{product.price * product.quantity}}</td>
+              <td class="text-right">${{product.price | currency: 'USD'}}</td>
+              <td class="text-right">${{product.price * product.quantity | currency: 'USD'}}</td>
             </tr>
           </tbody>
 
@@ -77,7 +77,7 @@
               <td></td>
               <td colspan="3"></td>
               <td class="text-right"><b>Sub-Total</b></td>
-              <td class="text-right">${{orders.totalAmount}}</td>
+              <td class="text-right">{{orders.totalAmount | currency: 'USD'}}</td>
             </tr>
             <tr>
               <td></td>
@@ -89,7 +89,7 @@
               <td></td>
               <td colspan="3"></td>
               <td class="text-right"><b>Total</b></td>
-              <td class="text-right">${{orders.totalAmount + 10}}</td>
+              <td class="text-right">{{orders.totalAmount + 10 | currency: 'USD'}}</td>
             </tr>
           </tfoot>
         </table>

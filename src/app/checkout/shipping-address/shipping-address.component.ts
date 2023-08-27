@@ -11,11 +11,11 @@ import { AuthService } from 'src/app/auth.service';
 import { Product } from 'src/app/product.model';
 
 @Component({
-  selector: 'app-billing',
-  templateUrl: './billing-details.component.html',
-  styleUrls: ['./billing-details.component.css'],
+  selector: 'app-shipping-address',
+  templateUrl: './shipping-address.component.html',
+  styleUrls: ['./shipping-address.component.css'],
 })
-export class BillingDetailsComponent implements OnInit {
+export class ShippingAddressComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
   products: Product[] = [];
@@ -53,17 +53,19 @@ export class BillingDetailsComponent implements OnInit {
   }
 
   submitInfor() {
-    const a = JSON.parse(localStorage.getItem('order' + this.user?.id)!) || [];
-    const ifCheckout = this.form.value;
-    if (this.form.invalid) {
-      return;
+    if (this.form.valid) {
+      const a =
+        JSON.parse(localStorage.getItem('order' + this.user?.id)!) || [];
+      const ifCheckout = this.form.value;
+      ifCheckout.id = a.length
+        ? Math.max(...a.map((x: { id: number }) => x.id)) + 1
+        : 1;
+      a.push(ifCheckout);
+      localStorage.setItem('order' + this.user?.id, JSON.stringify(a));
+      this.router.navigate(['/profile']);
+    } else {
+      this.form.markAllAsTouched();
     }
-    ifCheckout.id = a.length
-      ? Math.max(...a.map((x: { id: number }) => x.id)) + 1
-      : 1;
-    a.push(ifCheckout);
-    localStorage.setItem('order' + this.user?.id, JSON.stringify(a));
-    this.router.navigate(['/profile']);
   }
 
   getDataFrLocalStorage(): void {

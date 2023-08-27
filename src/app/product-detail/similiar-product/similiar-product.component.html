@@ -6,7 +6,7 @@
       <h4>{{productco.title}}</h4>
     </a>
       <div class="product-sidebar-price">
-        ${{productco.price}}
+        {{productco.price | currency: 'USD'}}
       </div>
     </div>
   </div>
