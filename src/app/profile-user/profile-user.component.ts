@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IUser } from '../auth.model';
-import { AuthService } from '../auth.service';
-import { Order } from '../product.model';
+import { ToastrService } from 'ngx-toastr';
+import { ORDER_KEY, USER_KEY } from 'src/helpers/localStorage';
+import { IUser } from '../model/auth.model';
+import { AuthService } from '../service/auth.service';
+import { Order } from '../model/product.model';
 
 @Component({
   selector: 'app-profile-user',
@@ -13,16 +15,14 @@ export class ProfileUserComponent {
   orders: Order[] = [];
   user: IUser | null;
   form!: FormGroup;
-  submitted = false;
 
   constructor(
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastrService: ToastrService
   ) {
     this.user = this.authService.userValue;
-    this.getUserLocalStorage();
     this.getDataFrLocalStorage();
-    console.log(this.user);
   }
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -36,17 +36,14 @@ export class ProfileUserComponent {
   get f() {
     return this.form.controls;
   }
-  getUserLocalStorage() {
-    this.user = JSON.parse(localStorage.getItem('user')!);
-  }
   getDataFrLocalStorage(): void {
     this.orders = JSON.parse(
-      localStorage.getItem('order' + this.user?.id)! || '[]'
+      localStorage.getItem(ORDER_KEY + this.user?.id)! || '[]'
     );
   }
   saveInfor() {
-    this.getUserLocalStorage();
-    const a = this.form.value;
-    localStorage.setItem('user', JSON.stringify(a));
+    this.user = JSON.parse(localStorage.getItem(USER_KEY)!);
+    this.toastrService.success('Successful change', 'Success!');
+    localStorage.setItem(USER_KEY, JSON.stringify(this.form.value));
   }
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs/operators';
-import { AlertService } from '../../alert.service';
-import { AuthService } from '../../auth.service';
+import { AlertService } from '../../service/alert.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,15 +13,14 @@ import { AuthService } from '../../auth.service';
 })
 export class SignUpComponent implements OnInit {
   form!: FormGroup;
-  loading = false;
-  submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit() {
@@ -28,7 +28,8 @@ export class SignUpComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', Validators.required],
+      checkBox: ['', Validators.required],
     });
   }
 
@@ -37,26 +38,25 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
-    this.alertService.clear();
-    if (this.form.invalid) {
-      return;
+    if (this.form.valid) {
+      this.alertService.clear();
+      this.authService
+        .register(this.form.value)
+        .pipe(first())
+        .subscribe({
+          next: () => {
+            this.toastrService.success('Register Success!', 'Success!');
+            this.router.navigate(['/signin'], { relativeTo: this.route });
+          },
+          error: () => {
+            this.toastrService.error(
+              'Username has been duplicated by another user !',
+              'Error!'
+            );
+          },
+        });
+    } else {
+      this.form.markAllAsTouched();
     }
-    this.loading = true;
-    this.authService
-      .register(this.form.value)
-      .pipe(first())
-      .subscribe({
-        next: () => {
-          this.alertService.success('Registration successful', {
-            keepAfterRouteChange: true,
-          });
-          this.router.navigate(['/signin'], { relativeTo: this.route });
-        },
-        error: (error) => {
-          this.alertService.error(error);
-          this.loading = false;
-        },
-      });
   }
 }

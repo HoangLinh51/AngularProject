@@ -1,8 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IUser } from 'src/app/auth.model';
-import { AuthService } from 'src/app/auth.service';
-import { Product } from '../../product.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { IUser } from 'src/app/model/auth.model';
+import { AuthService } from 'src/app/service/auth.service';
+import { CART_KEY } from 'src/helpers/localStorage';
+import { Product } from '../../model/product.model';
 
 @Component({
   selector: 'app-product',
@@ -17,7 +20,10 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastrService: ToastrService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.user = this.authService.userValue;
   }
@@ -28,32 +34,37 @@ export class ProductComponent implements OnInit {
     });
     this.addToCart;
   }
-
   get f() {
     return this.form.controls;
   }
 
-  addToCart() {
-    let productstorage =
-      JSON.parse(localStorage.getItem('cart' + this.user?.id)!) || [];
-    const product = this.f.product.value;
-    console.log('123', product);
-    let abc = false;
-    for (let i = 0; i < productstorage.length; ++i) {
-      const c = productstorage[i];
-      if (c.id === product.id) {
-        productstorage[i].quantity += 1;
-        abc = true;
+  addToCart(id: number) {
+    if (this.user) {
+      let productstorage =
+        JSON.parse(localStorage.getItem(CART_KEY + this.user?.id)!) || [];
+      const product = this.f.product.value;
+      let abc = false;
+      for (let i = 0; i < productstorage.length; ++i) {
+        const c = productstorage[i];
+        if (c.id === product.id) {
+          productstorage[i].quantity += 1;
+          abc = true;
+        }
       }
+      if (!abc) {
+        product.quantity = 1;
+        productstorage.push(product);
+      }
+      localStorage.setItem(
+        CART_KEY + this.user?.id,
+        JSON.stringify(productstorage)
+      );
+      this.toastrService.success(
+        'The product ' + this.productco.title + ' has been added to cart!',
+        'Success!'
+      );
+    } else {
+      this.router.navigate(['/signin'], { relativeTo: this.route });
     }
-    if (!abc) {
-      product.quantity = 1;
-      productstorage.push(product);
-    }
-
-    localStorage.setItem(
-      'cart' + this.user?.id,
-      JSON.stringify(productstorage)
-    );
   }
 }

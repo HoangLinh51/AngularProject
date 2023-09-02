@@ -1,13 +1,17 @@
 <div class="single-product">
   <div class="product-f-image">
-    <img [src]="product.images[0]" >
+    <img [src]="product.images[0]">
     <div class="product-hover">
-      <a routerLink="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-      <a [routerLink]="['/shop/', product.id]" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+      <button type="submit" class="add-to-cart-link" (click)="addToCart(product.id)"><i class="fa fa-shopping-cart"></i>
+        Add to cart</button>
+      <button [routerLink]="['/shop/', product.id]" class="view-details-link"><i class="fa fa-link"></i> See
+        details</button>
     </div>
   </div>
-  <h2>{{product.title}}</h2>
-  <div class="product-carousel-price">
-    {{product.price | currency: 'USD'}}
-  </div>
+  <a [routerLink]="['/shop/', product.id]">
+    <h2>{{product.title}}</h2>
+    <div class="product-carousel-price">
+      {{product.price | currency: 'USD'}}
+    </div>
+  </a>
 </div>

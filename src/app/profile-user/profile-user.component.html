@@ -25,15 +25,14 @@
                 <mat-form-field class="agileits-top">
                   <mat-label>First Name</mat-label>
                   <input matInput type="text" class="form-control" [ngModel]="user?.firstName"
-                    formControlName="firstName" [ngClass]="{'is-invalid': submitted && f.firstName.errors }">
+                    formControlName="firstName">
                 </mat-form-field>
                 <br><br>
                 <mat-form-field class="agileits-top">
                   <mat-label>Last Name</mat-label>
-                  <input matInput type="text" class="form-control" [ngModel]="user?.lastName" formControlName="lastName"
-                    [ngClass]="{'is-invalid': submitted && f.lastName.errors }">
+                  <input matInput type="text" class="form-control" [ngModel]="user?.lastName" formControlName="lastName">
                 </mat-form-field>
-                <button type="submit" class="profile-edit-btn" name="btnAddMore">Edit Profile</button>
+                <button type="submit" class="profile-edit-btn" name="btnAddMore">Save Profile</button>
               </form>
             </mat-tab>
             <mat-tab label="History Order">
@@ -48,12 +47,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let order of orders" [order]="order" [routerLink]="['order/', order.id]">
+                  <tr *ngFor="let order of orders" [order]="order" [routerLink]="['order/', order.id]"
+                    style="cursor: pointer">
                     <td class="text-center">{{order.id}}</td>
                     <td class="text-center">{{order.name}}</td>
                     <td class="text-center">{{order.country}}</td>
                     <td class="text-center">{{order.address}}</td>
-                    <td class="text-center">${{order.totalAmount}}</td>
+                    <td class="text-center">{{order.totalAmount | currency: 'USD'}}</td>
                   </tr>
                 </tbody>
               </table>

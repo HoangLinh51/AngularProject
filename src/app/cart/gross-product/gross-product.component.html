@@ -1,29 +1,27 @@
 <ng-container *ngIf="productco.id">
-<tr class="gross-product">
-  <td class="product-remove">
-    <button type="submit" (click)="removeItem()"><i class="fa-solid fa-xmark"></i></button>
-  </td>
-  <a [routerLink]="['/shop/', productco.id]" >
-  <td class="product-thumbnail">
-    <img width="145" height="145" alt="poster_1_up" class="shop_thumbnail"
-        [src]="productco.images[0]">
-  </td>
-  <td class="product-name">
-    {{productco.title}}
-  </td>
-</a>
-  <td class="product-price">
-    <span class="amount">{{productco.price | currency: 'USD'}}</span>
-  </td>
-  <td class="product-quantity">
-    <div class="quantity buttons_added">
-      <input type="number" size="4" class="quantity" title="Qty" min="1" step="1" max="4" [(ngModel)]="productco.quantity" (ngModelChange)="onChangeQuantity()">
-      <!-- <span>{{productco.quantity}}</span> -->
-    </div>
-  </td>
-  <td class="product-subtotal">
-    <span class="amount">{{productco.price * productco.quantity | currency: 'USD'}}</span>
-  </td>
-</tr>
+  <tr class="gross-product">
+    <td class="product-remove">
+      <button type="submit" (click)="removeItem()"><i class="fa-solid fa-xmark"></i></button>
+    </td>
+    <a [routerLink]="['/shop/', productco.id]">
+      <td class="product-thumbnail">
+        <img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" [src]="productco.images[0]">
+      </td>
+      <td class="product-name">
+        {{productco.title}}
+      </td>
+    </a>
+    <td class="product-price">
+      <span class="amount">{{productco.price | currency: 'USD'}}</span>
+    </td>
+    <td class="product-quantity">
+      <div class="quantity buttons_added">
+        <input type="number" class="quantity" title="Qty" step="1" min="1"
+          [(ngModel)]="productco.quantity" (click)="[onChangeQuantity(), totalAmount()]">
+      </div>
+    </td>
+    <td class="product-subtotal">
+      <span class="amount">{{productco.price * productco.quantity | currency: 'USD'}}</span>
+    </td>
+  </tr>
 </ng-container>
-<!-- (ngModel)]="quantity" -->

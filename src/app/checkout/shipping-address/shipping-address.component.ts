@@ -6,9 +6,11 @@ import {
   FormControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IUser } from 'src/app/auth.model';
-import { AuthService } from 'src/app/auth.service';
-import { Product } from 'src/app/product.model';
+import { ToastrService } from 'ngx-toastr';
+import { IUser } from 'src/app/model/auth.model';
+import { AuthService } from 'src/app/service/auth.service';
+import { Product } from 'src/app/model/product.model';
+import { CART_KEY, ORDER_KEY } from 'src/helpers/localStorage';
 
 @Component({
   selector: 'app-shipping-address',
@@ -17,17 +19,19 @@ import { Product } from 'src/app/product.model';
 })
 export class ShippingAddressComponent implements OnInit {
   form!: FormGroup;
-  submitted = false;
   products: Product[] = [];
-  loading = false;
   user: IUser | null;
+  date = new Date();
+  total!: number;
+  priceShipping = 10;
 
   @Input() product!: any[];
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) {
     this.user = this.authService.userValue;
     this.getDataFrLocalStorage();
@@ -44,6 +48,7 @@ export class ShippingAddressComponent implements OnInit {
       phone: ['', Validators.required],
       payment: ['', Validators.required],
       product: [this.products, Validators.required],
+      date: [this.date],
       totalAmount: [this.totalAmount(), Validators.required],
     });
   }
@@ -55,34 +60,39 @@ export class ShippingAddressComponent implements OnInit {
   submitInfor() {
     if (this.form.valid) {
       const a =
-        JSON.parse(localStorage.getItem('order' + this.user?.id)!) || [];
+        JSON.parse(localStorage.getItem(ORDER_KEY + this.user?.id)!) || [];
       const ifCheckout = this.form.value;
       ifCheckout.id = a.length
         ? Math.max(...a.map((x: { id: number }) => x.id)) + 1
         : 1;
       a.push(ifCheckout);
-      localStorage.setItem('order' + this.user?.id, JSON.stringify(a));
+      localStorage.setItem(ORDER_KEY + this.user?.id, JSON.stringify(a));
       this.router.navigate(['/profile']);
+
+      this.toastrService.success('Successful Order', 'Success!');
     } else {
+      this.toastrService.error(
+        'Please fill out the information completely',
+        'Error!'
+      );
       this.form.markAllAsTouched();
     }
   }
 
   getDataFrLocalStorage(): void {
-    const key = 'cart' + this.user?.id;
+    const key = CART_KEY + this.user?.id;
     this.products = JSON.parse(localStorage.getItem(key)! || '[]');
-    console.log('this.products', this.products, key);
   }
 
   totalAmount() {
     const cartItems = JSON.parse(
-      localStorage.getItem('cart' + this.user?.id)! || '[]'
+      localStorage.getItem(CART_KEY + this.user?.id)! || '[]'
     );
-    const totalAmounts = cartItems.reduce(
+    this.total = cartItems.reduce(
       (sum: number, product: { price: number; quantity: number }) =>
         sum + product.price * product.quantity,
       0
     );
-    return totalAmounts;
+    return this.total;
   }
 }

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap } from 'rxjs';
-import { IUser } from 'src/app/auth.model';
-import { AuthService } from 'src/app/auth.service';
-import { Order, Product } from 'src/app/product.model';
-import { ProductService } from 'src/app/product.service';
+import { IUser } from 'src/app/model/auth.model';
+import { AuthService } from 'src/app/service/auth.service';
+import { Order } from 'src/app/model/product.model';
+import { ORDER_KEY } from 'src/helpers/localStorage';
 
 @Component({
   selector: 'app-order-detail',
@@ -14,7 +14,6 @@ import { ProductService } from 'src/app/product.service';
 export class OrderDetailComponent {
   user: IUser | null;
   orders: Order = new Order();
-  products!: Product[];
 
   constructor(
     private authService: AuthService,
@@ -36,9 +35,8 @@ export class OrderDetailComponent {
 
   getOrderById(id: number) {
     const orders: Order[] =
-      JSON.parse(localStorage.getItem('order' + this.user?.id)!) || [];
+      JSON.parse(localStorage.getItem(ORDER_KEY + this.user?.id)!) || [];
     const order = orders.find((o: Order) => o.id === id);
-    console.log('order.product', order?.product);
     return order;
   }
 }

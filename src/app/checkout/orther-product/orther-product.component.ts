@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Product } from 'src/app/product.model';
-import { ProductService } from 'src/app/product.service';
+import { Product } from 'src/app/model/product.model';
 
 @Component({
   selector: 'app-orther',
@@ -11,6 +10,4 @@ export class OrtherProductComponent {
   @Input() product: Product = new Product();
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

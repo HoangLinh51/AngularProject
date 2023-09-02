@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IUser } from 'src/app/auth.model';
-import { AuthService } from 'src/app/auth.service';
-import { Product } from 'src/app/product.model';
+import { IUser } from 'src/app/model/auth.model';
+import { AuthService } from 'src/app/service/auth.service';
+import { Product } from 'src/app/model/product.model';
+import { CartComponent } from '../cart.component';
 
 @Component({
   selector: 'app-gross',
@@ -9,36 +10,25 @@ import { Product } from 'src/app/product.model';
   styleUrls: ['./gross-product.component.css'],
 })
 export class GrossProductComponent {
-  user: IUser | null;
+  user!: IUser | null;
 
   @Input() productco: Product = new Product();
-  @Output() sendData = new EventEmitter<number>();
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private cartComponent: CartComponent
+  ) {
     this.user = this.authService.userValue;
-    console.log('this.productco', this.productco);
   }
-  ngOnInit(): void {}
 
   removeItem() {
-    this.sendData.emit(this.productco.id);
+    this.cartComponent.removeItem(this.productco.id);
   }
 
   onChangeQuantity() {
-    let productstorage = JSON.parse(
-      localStorage.getItem('cart' + this.user?.id)!
-    );
-    let abc = false;
-    for (let i = 0; i < productstorage.length; ++i) {
-      const c = productstorage[i];
-      if (c.id === this.productco.id) {
-        productstorage[i].quantity = this.productco.quantity;
-        abc = true;
-      }
-    }
-    localStorage.setItem(
-      'cart' + this.user?.id,
-      JSON.stringify(productstorage)
-    );
+    this.cartComponent.onChangeQuantity(this.productco);
+  }
+  totalAmount() {
+    this.cartComponent.totalAmount();
   }
 }

@@ -1,6 +1,6 @@
 <div class="col-md-3 col-sm-6 single-product">
   <div class="single-shop-product">
-    <form [formGroup]="form" (ngSubmit)="addToCart()">
+    <form [formGroup]="form" >
       <a [routerLink]="['/shop/', productco.id]">
         <div class="product-upper">
           <img [src]="productco.images[0]" alt="">
@@ -11,7 +11,7 @@
         </div>
       </a>
       <div class="product-option-shop">
-        <button type="submit" >Add to cart</button>
+        <button type="submit" (click)="addToCart(productco.id)">Add to cart</button>
       </div>
     </form>
   </div>

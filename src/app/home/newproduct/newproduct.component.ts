@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Product } from 'src/app/product.model';
-import { ProductService } from 'src/app/product.service';
+import { Product } from 'src/app/model/product.model';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-newproduct',
@@ -8,7 +8,7 @@ import { ProductService } from 'src/app/product.service';
   styleUrls: ['./newproduct.component.css'],
 })
 export class NewproductComponent {
-  allProduct: number = 0;
+  totalProduct: number = 0;
   pagination: number = 1;
   pagesize: number = 8;
   datas: Product[] = [];
@@ -24,7 +24,7 @@ export class NewproductComponent {
       .searchProduct('', this.pagination, this.pagesize)
       .subscribe((res: any) => {
         this.datas = res.products;
-        this.allProduct = res.total;
+        this.totalProduct = res.total;
       });
   }
   renderPage(event: number) {

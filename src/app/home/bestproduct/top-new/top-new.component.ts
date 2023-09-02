@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Product } from 'src/app/product.model';
+import { Product } from 'src/app/model/product.model';
 
 @Component({
   selector: 'app-top-new',
@@ -10,6 +10,4 @@ export class TopNewComponent {
   @Input() productco: Product = new Product();
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
-import { Product } from 'src/app/product.model';
-import { ProductService } from 'src/app/product.service';
+import { FormGroup } from '@angular/forms';
+import { Product } from 'src/app/model/product.model';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-bestproduct',
@@ -9,7 +9,6 @@ import { ProductService } from 'src/app/product.service';
   styleUrls: ['./bestproduct.component.css'],
 })
 export class BestproductComponent {
-  allProduct: number = 0;
   pagination: number = 3;
   datas: Product[] = [];
   form!: FormGroup;

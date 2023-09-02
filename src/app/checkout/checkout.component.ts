@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Product } from '../product.model';
-import { ProductService } from '../product.service';
+import { Product } from '../model/product.model';
+import { ProductService } from '../service/product.service';
 
 @Component({
   selector: 'app-checkout',
@@ -8,7 +8,7 @@ import { ProductService } from '../product.service';
   styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent {
-  allProduct: number = 0;
+  totalProduct: number = 0;
   pagination: number = 3;
   pagesize: number = 5;
   datas: Product[] = [];
@@ -24,7 +24,7 @@ export class CheckoutComponent {
       .searchProduct('', this.pagination, this.pagesize)
       .subscribe((res: any) => {
         this.datas = res.products;
-        this.allProduct = res.total;
+        this.totalProduct = res.total;
       });
   }
 }

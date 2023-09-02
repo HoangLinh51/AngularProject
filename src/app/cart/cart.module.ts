@@ -1,23 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { NgOptimizedImage } from '@angular/common';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { GrossProductComponent } from './gross-product/gross-product.component';
-import { OrtherProductComponent } from './orther-product/orther-product.component';
-import { CartTotalsComponent } from './cart-totals/cart-totals.component';
-import { CartComponent } from './cart.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { GrossProductComponent } from './gross-product/gross-product.component';
+import { OrtherProductComponent } from './orther-product/orther-product.component';
+import { CartComponent } from './cart.component';
+
 @NgModule({
-  declarations: [
-    CartComponent,
-    CartTotalsComponent,
-    GrossProductComponent,
-    OrtherProductComponent,
-  ],
+  declarations: [CartComponent, GrossProductComponent, OrtherProductComponent],
   imports: [
     RouterModule,
     FormsModule,

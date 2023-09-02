@@ -1,5 +1,4 @@
 <form [formGroup]="form" (ngSubmit)="submitInfor()">
-
   <div id="customer_details" class="col2-set">
     <div class="col-1">
       <div class="woocommerce-billing-fields">
@@ -154,19 +153,19 @@
       <tfoot>
         <tr class="cart-subtotal">
           <th>Cart Subtotal</th>
-          <td>{{totalAmount() | currency: 'USD'}}</td>
+          <td>{{total | currency: 'USD'}}</td>
         </tr>
         <tr class="shipping">
           <th>Shipping and Handling</th>
           <td>
-            $10
+            {{priceShipping| currency:'USD'}}
             <input type="hidden" class="shipping_method" value="free_shipping" id="shipping_method_0" data-index="0"
               name="shipping_method[0]">
           </td>
         </tr>
         <tr class="order-total">
           <th>Order Total</th>
-          <td type="number"><strong>{{totalAmount() | currency: 'USD'}}</strong> </td>
+          <td type="number"><strong>{{total + priceShipping | currency: 'USD' }}</strong> </td>
         </tr>
       </tfoot>
 
@@ -175,28 +174,28 @@
     <div class="payment">
       <h3 class="order_review_heading">Payment methods</h3>
 
-      <label class="payment-method">
+      <label class="payment-method" style="cursor: pointer">
         <input type="radio" formControlName="payment" value="cash" ngModel />
-        <span>Cash</span>
+        <span> Cash</span>
       </label>
 
-      <label class="payment-method">
+      <label class="payment-method" style="cursor: pointer">
         <input type="radio" formControlName="payment" value="banking" ngModel />
-        <span>Direct Bank Transfer</span>
+        <span> Direct Bank Transfer</span>
       </label>
 
-      <label class="payment-method">
+      <label class="payment-method" style="cursor: pointer">
         <input type="radio" formControlName="payment" value="paypal" ngModel />
-        <span>Paypal</span>
+        <span> Paypal</span>
       </label>
 
       <ng-container *ngIf="f.payment.invalid && f.payment.touched">
-        <div class="invalid-message">This payment is required.</div>
+        <div class="invalid-message"> This payment is required.</div>
       </ng-container>
 
     </div>
     <div class="form-row place-order">
-      <button type="submit" [disabled]="loading" class="btn btn-primary">
+      <button type="submit" class="btn btn-primary">
         Order
       </button>
     </div>

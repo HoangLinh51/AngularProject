@@ -20,3 +20,11 @@ export class PostNew {
   image!: string;
   body!: string;
 }
+
+export interface IconDefinition {
+  name: string;
+  theme?: ThemeType | undefined;
+  icon: string;
+}
+
+export type ThemeType = 'fill' | 'outline' | 'twotone';

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Product } from './product.model';
+import { Product } from '../model/product.model';
 
 const httpOptions = {
   headers: new HttpHeaders(),
@@ -27,7 +27,6 @@ export class ProductService {
 
   getProductByCategory(category: string) {
     const c = this.apiUrl + '/category/' + category;
-    // console.log('c', c);
     return this.httpClient.get(c);
   }
   searchProduct(search: string, page: number, pagesize = 12) {

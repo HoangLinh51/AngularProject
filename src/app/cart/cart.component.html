@@ -1,22 +1,31 @@
+<div class="product-big-title-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="product-bit-title text-center">
+          <h2>Cart</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="single-product-area">
-  <div class="zigzag-bottom"></div>
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <!-- <app-search></app-search> -->
         <h2 class="sidebar-title">Orther Product</h2>
         <app-orther
-          *ngFor="let product of datas | paginate:{currentPage: pagination, itemsPerPage: 5, totalItems: allProduct} "
+          *ngFor="let product of datas | paginate:{currentPage: pagination, itemsPerPage: 5, totalItems: totalProduct} "
           [product]="product"></app-orther>
       </div>
       <div class="col-md-8">
         <div class="product-content-right">
           <div class="woocommerce">
             <h2 class="sidebar-title">Gross Product</h2>
-
             <table cellspacing="0" class="shop_table cart">
               <tbody>
-                <app-gross (sendData)="removeItem($event)" *ngFor="let product of dataFromStorage"
+                <app-gross (removeData)="removeItem($event)" *ngFor="let product of dataFromStorage"
                   [productco]="product"></app-gross>
                 <tr>
                   <td class="actions" colspan="6">
@@ -33,12 +42,26 @@
               </tbody>
             </table>
             <div class="cart-collaterals">
-              <!-- <div class="cross-sells">
-                <h2>You may be interested in...</h2>
-                <app-interested *ngFor="let product of datas| paginate:{currentPage: pagination, itemsPerPage: 2, totalItems: allProduct} "
-                [productco]="product"></app-interested>
-              </div> -->
-              <app-cart-totals></app-cart-totals>
+              <div class="cart_totals">
+                <h2>Cart Totals</h2>
+                <table cellspacing="0">
+                  <tbody>
+                    <tr class="cart-subtotal">
+                      <th>Cart Subtotal</th>
+                      <td><span class="amount">{{ total | currency: 'USD'}}</span></td>
+                    </tr>
+                    <tr class="shipping">
+                      <th>Shipping and Handling</th>
+                      <td>{{priceShipping | currency: 'USD'}}</td>
+                    </tr>
+                    <tr class="order-total">
+                      <th>Order Total</th>
+                      <td><strong><span class="amount">{{ total + priceShipping | currency: 'USD' }}</span></strong>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

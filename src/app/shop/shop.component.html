@@ -1,13 +1,24 @@
-<app-title></app-title>
+<div class="product-big-title-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="product-bit-title text-center">
+          <h2>Shop</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="single-product-area">
-  <div class="zigzag-bottom"></div>
   <div class="container">
     <form [formGroup]="form" (ngSubmit)="search()">
-      <input type="text" formControlName ="search"  [ngClass]="{'is-invalid': submitted && f.search}" placeholder="Search" >
+      <input type="text" formControlName ="search" placeholder="Search" >
       <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
     </form>
     <div class="row">
-      <app-product *ngFor="let product of datas | paginate: {currentPage: page, itemsPerPage: 12, totalItems: totalproduct}
+      <app-product *ngFor="let product of datas
+      | paginate: {currentPage: page, itemsPerPage: 12, totalItems: totalproduct}
        " [productco]="product"></app-product>
     </div>
     <div class="d-flex justify-content-center">

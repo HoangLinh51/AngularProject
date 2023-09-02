@@ -14,12 +14,12 @@
   <div class="agileits-top">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <input type="text" formControlName="firstName" class="form-control" placeholder="Firstname">
-      <ng-container *ngIf="f.firstname.invalid && f.firstname.touched">
+      <ng-container *ngIf="f.firstName.invalid && f.firstName.touched">
         <div class="invalid-message">This firstname is required.</div>
       </ng-container>
       <br>
       <input type="text" formControlName="lastName" class="form-control" placeholder="LastName">
-      <ng-container *ngIf="f.lastname.invalid && f.lastname.touched">
+      <ng-container *ngIf="f.lastName.invalid && f.lastName.touched">
         <div class="invalid-message">This lastname is required.</div>
       </ng-container>
       <br>
@@ -30,18 +30,21 @@
       <br>
       <input type="password" formControlName="password" class="form-control" placeholder="Password" minlength="6">
       <ng-container *ngIf="f.password.invalid && f.password.touched">
+        <div class="invalid-message" *ngIf="f.password.errors?.required">This password is required.</div>
         <div class="invalid-message" *ngIf="f.password.errors?.minlength">Minimum length of a password is 6</div>
-        <div class="invalid-message" *ngIf="f.password.errors?.required">This username is required.</div>
       </ng-container>
       <br>
       <div class="wthree-text">
         <label class="anim">
-          <input type="checkbox" class="checkbox"> <span>I Agree To The Terms & Conditions</span>
+          <input type="checkbox" formControlName="checkBox" class="checkbox"> I Agree To The Terms & Conditions
+          <ng-container *ngIf="f.checkBox.invalid && f.checkBox.touched">
+            <div class="invalid-message">This checkbox is required.</div>
+          </ng-container>
         </label>
         <div class="clear"> </div>
       </div>
-      <button type="submit" [disabled]="loading" class="btn btn-primary">
-        <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+      <button type="submit"  class="btn btn-primary">
+        <span class="spinner-border spinner-border-sm me-1"></span>
         Register
       </button>
       <p>Don't have an Account? <a [routerLink]="['/signin']"> Login Now!</a></p>

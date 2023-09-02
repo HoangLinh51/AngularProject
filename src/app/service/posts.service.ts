@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Posts } from './post.model';
+import { Posts } from '../model/post.model';
 
 const httpOptions = {
   headers: new HttpHeaders(),
@@ -23,5 +23,15 @@ export class PostService {
   getProductById(id: number) {
     const i = this.apiUrl + '/' + id;
     return this.httpClient.get(i);
+  }
+  searchPost(search: string, page: number, pagesize = 5) {
+    var skip = (page - 1) * pagesize;
+    const s =
+      this.apiUrl +
+      '/search?q=' +
+      search +
+      `&limit=${pagesize}` +
+      `&skip=${skip}`;
+    return this.httpClient.get(s);
   }
 }

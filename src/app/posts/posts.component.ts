@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Posts } from './post.model';
-import { PostService } from './posts.service';
+import { Posts } from '../model/post.model';
+import { PostService } from '../service/posts.service';
 
 @Component({
   selector: 'app-posts',
@@ -8,24 +8,34 @@ import { PostService } from './posts.service';
   styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent {
-  totalpost: number = 0;
+  totalPost: number = 0;
   page: number = 0;
-  post: Posts[] = [];
+  posts: Posts[] = [];
+  value: number = 0;
 
-  constructor(private postService: PostService) {
-    this.getAllPost();
+  constructor(private postService: PostService) {}
+
+  ngOnInit(): void {
+    this.getList('', 1);
+    this.getAllpost();
   }
-
-  ngOnInit() {}
-
-  getAllPost() {
+  getAllpost() {
     this.postService.getAll(this.page).subscribe((res: any) => {
-      this.post = res.posts;
-      this.totalpost = res.total;
+      this.posts = res.products;
+      this.totalPost = res.total;
+      console.log('this.getAllpost', res.posts);
     });
   }
+
+  getList(keyword: string, page: number) {
+    this.postService.searchPost(keyword, page).subscribe((res: any) => {
+      this.posts = res.posts;
+      this.totalPost = res.total;
+    });
+  }
+
   renderPage(event: number) {
     this.page = event;
-    this.getAllPost();
+    this.getList('', event);
   }
 }

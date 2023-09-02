@@ -1,19 +1,18 @@
 <div class="product-widget-area">
-  <div class="zigzag-bottom"></div>
   <div class="container">
     <div class="row">
       <div class="col-md-4">
         <div class="single-product-widget">
           <h2 class="product-wid-title">Top Sellers</h2>
-          <a routerLink="" class="wid-view-more">View All</a>
+          <a routerLink="/shop" class="wid-view-more">View All</a>
           <app-top-sellers *ngFor="let product of datas
-          " [productco]="product" ></app-top-sellers>
+          " [productco]="product"></app-top-sellers>
         </div>
       </div>
       <div class="col-md-4">
         <div class="single-product-widget">
           <h2 class="product-wid-title">Recently Viewed</h2>
-          <a routerLink="#" class="wid-view-more">View All</a>
+          <a routerLink="/shop" class="wid-view-more">View All</a>
           <app-recently-viewed *ngFor="let product of datas
           " [productco]="product"></app-recently-viewed>
         </div>
@@ -21,7 +20,7 @@
       <div class="col-md-4">
         <div class="single-product-widget">
           <h2 class="product-wid-title">Top New</h2>
-          <a routerLink="#" class="wid-view-more">View All</a>
+          <a routerLink="/shop" class="wid-view-more">View All</a>
           <app-top-new *ngFor="let product of datas
           " [productco]="product"></app-top-new>
         </div>

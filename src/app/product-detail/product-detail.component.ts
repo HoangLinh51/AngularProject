@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, of, delay, throwError, map, switchMap } from 'rxjs';
-import { Product } from '../product.model';
-import { ProductService } from '../product.service';
+import { map, switchMap } from 'rxjs';
+import { Product } from '../model/product.model';
+import { ProductService } from '../service/product.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,13 +10,12 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-detail.component.css'],
 })
 export class ProductDetailComponent {
-  allProduct: number = 0;
+  totalProduct: number = 0;
   pagination: number = 1;
   pagesize: number = 6;
   datas: Product[] = [];
   procategory: Product[] = [];
   productDetail: Product = new Product();
-  category!: string;
 
   constructor(
     private productService: ProductService,
@@ -41,7 +40,6 @@ export class ProductDetailComponent {
       .searchProduct('', this.pagination, this.pagesize)
       .subscribe((res: any) => {
         this.datas = res.products;
-        console.log('product-related', this.datas);
       });
   }
 

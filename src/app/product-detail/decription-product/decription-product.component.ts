@@ -1,8 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IUser } from 'src/app/auth.model';
-import { AuthService } from 'src/app/auth.service';
-import { Product } from 'src/app/product.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { IUser } from 'src/app/model/auth.model';
+import { AuthService } from 'src/app/service/auth.service';
+import { Product } from 'src/app/model/product.model';
+import { CART_KEY } from 'src/helpers/localStorage';
 
 @Component({
   selector: 'app-decription-product',
@@ -18,7 +21,10 @@ export class DecriptionProductComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastrService: ToastrService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.user = this.authService.userValue;
   }
@@ -34,27 +40,33 @@ export class DecriptionProductComponent {
   }
 
   addToCart() {
-    // debugger;
-    let productstorage =
-      JSON.parse(localStorage.getItem('cart' + this.user?.id)!) || [];
-    const a = this.product;
-    const b = this.quantity;
-    let abc = false;
-    for (let i = 0; i < productstorage.length; ++i) {
-      const c = productstorage[i];
-      if (c.id === a.id) {
-        productstorage[i].quantity += b;
-        abc = true;
+    if (this.user) {
+      let productstorage =
+        JSON.parse(localStorage.getItem(CART_KEY + this.user?.id)!) || [];
+      let abc = false;
+      for (let i = 0; i < productstorage.length; ++i) {
+        const c = productstorage[i];
+        if (c.id === this.product.id) {
+          productstorage[i].quantity += this.quantity;
+          abc = true;
+        }
       }
-    }
-    if (!abc) {
-      a.quantity = b;
-      productstorage.push(a);
-    }
+      if (!abc) {
+        this.product.quantity = this.quantity;
+        productstorage.push(this.product);
+      }
 
-    localStorage.setItem(
-      'cart' + this.user?.id,
-      JSON.stringify(productstorage)
-    );
+      localStorage.setItem(
+        CART_KEY + this.user?.id,
+        JSON.stringify(productstorage)
+      );
+
+      this.toastrService.success(
+        'The product ' + this.product.title + ' has been added to cart!',
+        'Success!'
+      );
+    } else {
+      this.router.navigate(['/signin'], { relativeTo: this.route });
+    }
   }
 }

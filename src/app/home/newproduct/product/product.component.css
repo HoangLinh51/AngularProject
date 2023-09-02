@@ -1,8 +1,81 @@
 img {
   list-style: none;
-  height: 200px;
+  height: 250px;
   margin-left: auto;
   margin-top: 10px;
-  width: 250px;
+  width: 220px;
   text-align: center;
+}
+
+form {
+  width: 200px;
+}
+
+.product-hover {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #ddd;
+}
+
+.product-hover:after {
+  background: none repeat scroll 0 0 #000;
+  content: "";
+  height: 100%;
+  left: -100%;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  transition: .4s;
+}
+
+.product-hover button {
+  background: none repeat scroll 0 0 #1abc9c;
+  border-radius: 0px;
+  color: #fff;
+  font-size: 16px;
+  left: 10%;
+  margin: 0;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  border: 1px solid #1abc9c;
+  width: 80%;
+  z-index: 99;
+  transition: .4s;
+}
+
+.product-hover button:hover {
+  background: #000;
+  text-decoration: none;
+  border-color: #444;
+}
+
+.product-hover button i.fa {
+  margin-right: 5px;
+}
+
+.product-hover button.add-to-cart-link {
+  top: -25%;
+}
+
+.product-hover button.view-details-link {
+  bottom: -25%;
+}
+
+.single-product:hover .product-hover button.add-to-cart-link {
+  top: 25%;
+}
+
+.single-product:hover .product-hover button.view-details-link {
+  bottom: 25%;
+}
+
+.single-product:hover .product-hover:after {
+  left: 0
 }

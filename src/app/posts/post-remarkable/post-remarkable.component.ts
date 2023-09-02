@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PostNew } from '../post.model';
+import { PostNew } from '../../model/post.model';
 
 @Component({
   selector: 'app-post-remarkable',
@@ -16,6 +16,5 @@ export class PostRemarkableComponent {
 
   getListPost(): void {
     this.postNew = JSON.parse(localStorage.getItem('post')!);
-    console.log('this.postNew', this.postNew);
   }
 }

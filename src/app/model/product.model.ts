@@ -24,6 +24,7 @@ export class Order {
   country!: string;
   email!: string;
   name!: string;
+  date!: Date;
   payment!: string;
   phone!: string;
   postcode!: string;

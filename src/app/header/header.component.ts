@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IUser } from '../auth.model';
-import { AuthService } from '../auth.service';
+import { IUser } from '../model/auth.model';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'header',

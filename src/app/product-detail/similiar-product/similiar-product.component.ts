@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/product.model';
-import { ProductService } from 'src/app/product.service';
+import { Product } from 'src/app/model/product.model';
 
 @Component({
   selector: 'app-similiar-product',
@@ -12,6 +10,4 @@ export class SimiliarProductComponent {
   @Input() productco: Product = new Product();
 
   constructor() {}
-
-  ngOnInit(): void {}
 }
