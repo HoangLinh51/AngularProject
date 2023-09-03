@@ -1,7 +1,7 @@
 <div class="col-md-3 col-sm-6 single-product">
   <div class="single-shop-product">
     <form [formGroup]="form" >
-      <a [routerLink]="['/shop/', productco.id]">
+      <div [routerLink]="['/shop/', productco.id]" style="cursor: pointer">
         <div class="product-upper">
           <img [src]="productco.images[0]" alt="">
         </div>
@@ -9,7 +9,7 @@
         <div class="product-carousel-price">
           {{productco.price | currency: 'USD'}}
         </div>
-      </a>
+      </div>
       <div class="product-option-shop">
         <button type="submit" (click)="addToCart(productco.id)">Add to cart</button>
       </div>

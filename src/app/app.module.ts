@@ -4,8 +4,8 @@ import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-
-import { MaterialModule } from './material-module';
+import { RouterModule } from '@angular/router';
+import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
@@ -33,8 +33,6 @@ import { LibModule } from './lib/lib.module';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import en from '@angular/common/locales/en';
-import { RouterModule } from '@angular/router';
-import { ToastrModule } from 'ngx-toastr';
 
 registerLocaleData(en);
 
@@ -55,13 +53,10 @@ registerLocaleData(en);
     AuthRoutingModule,
     ProductDetailModule,
     ProfileModule,
-    MaterialModule,
     PostModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     BrowserAnimationsModule,
-    // ScrollingModule,
-    // DragDropModule,
     ToastrModule.forRoot({
       closeButton: true,
       timeOut: 2000,

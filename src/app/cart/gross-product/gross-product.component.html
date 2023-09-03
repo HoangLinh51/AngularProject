@@ -1,23 +1,21 @@
 <ng-container *ngIf="productco.id">
-  <tr class="gross-product">
+  <tr class="gross-product" [routerLink]="['/shop/', productco.id]" style="cursor: pointer">
     <td class="product-remove">
       <button type="submit" (click)="removeItem()"><i class="fa-solid fa-xmark"></i></button>
     </td>
-    <a [routerLink]="['/shop/', productco.id]">
-      <td class="product-thumbnail">
-        <img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" [src]="productco.images[0]">
-      </td>
-      <td class="product-name">
-        {{productco.title}}
-      </td>
-    </a>
+    <td class="product-thumbnail">
+      <img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" [src]="productco.images[0]">
+    </td>
+    <td class="product-name">
+      {{productco.title}}
+    </td>
     <td class="product-price">
       <span class="amount">{{productco.price | currency: 'USD'}}</span>
     </td>
     <td class="product-quantity">
       <div class="quantity buttons_added">
-        <input type="number" class="quantity" title="Qty" step="1" min="1"
-          [(ngModel)]="productco.quantity" (click)="[onChangeQuantity(), totalAmount()]">
+        <input type="number" class="quantity" title="Qty" step="1" min="1" [(ngModel)]="productco.quantity"
+          (click)="[onChangeQuantity(), totalAmount()]">
       </div>
     </td>
     <td class="product-subtotal">

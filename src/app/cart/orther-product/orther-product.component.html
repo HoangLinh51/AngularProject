@@ -1,12 +1,10 @@
 <ng-container *ngIf="product.id">
   <div class="single-sidebar">
-    <div class="thubmnail-recent">
-      <a [routerLink]="['/shop/', product.id]">
-        <img src={{product.images[0]}} class="recent-thumb" alt="">
-        <h4>{{product.title}}</h4>
-      </a>
+    <div class="thubmnail-recent" [routerLink]="['/shop/', product.id]">
+      <img src={{product.images[0]}} class="recent-thumb" alt="">
+      <h4>{{product.title}}</h4>
       <div class="product-sidebar-price">
-        {{product.price | currency: 'USD'}}
+        <ins>{{product.price | currency: 'USD'}}</ins>
       </div>
     </div>
   </div>

@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { MaterialModule } from '../material-module';
 import { RouterModule } from '@angular/router';
 
 import { ProfileUserComponent } from './profile-user.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { LibModule } from '../lib/lib.module';
 
 @NgModule({
   declarations: [ProfileUserComponent, OrderDetailComponent],
@@ -19,7 +19,7 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule,
+    LibModule,
   ],
   providers: [provideAnimations()],
   bootstrap: [],

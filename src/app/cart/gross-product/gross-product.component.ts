@@ -3,6 +3,7 @@ import { IUser } from 'src/app/model/auth.model';
 import { AuthService } from 'src/app/service/auth.service';
 import { Product } from 'src/app/model/product.model';
 import { CartComponent } from '../cart.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-gross',
@@ -16,13 +17,15 @@ export class GrossProductComponent {
 
   constructor(
     private authService: AuthService,
-    private cartComponent: CartComponent
+    private cartComponent: CartComponent,
+    private toastrService: ToastrService
   ) {
     this.user = this.authService.userValue;
   }
 
   removeItem() {
     this.cartComponent.removeItem(this.productco.id);
+    this.toastrService.info('Delete Product!');
   }
 
   onChangeQuantity() {

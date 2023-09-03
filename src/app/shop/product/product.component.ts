@@ -21,9 +21,9 @@ export class ProductComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private toastrService: ToastrService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) {
     this.user = this.authService.userValue;
   }
@@ -63,6 +63,7 @@ export class ProductComponent implements OnInit {
         'The product ' + this.productco.title + ' has been added to cart!',
         'Success!'
       );
+      console.log('this.toastrService');
     } else {
       this.router.navigate(['/signin'], { relativeTo: this.route });
     }

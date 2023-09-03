@@ -15,6 +15,7 @@ import { ProductComponent } from './newproduct/product/product.component';
 import { TopSellersComponent } from './bestproduct/top-sellers/top-sellers.component';
 import { RecentlyViewedComponent } from './bestproduct/recently-viewed/recently-viewed.component';
 import { TopNewComponent } from './bestproduct/top-new/top-new.component';
+import { LibModule } from '../lib/lib.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { TopNewComponent } from './bestproduct/top-new/top-new.component';
     NgOptimizedImage,
     CarouselModule,
     NgxPaginationModule,
+    LibModule,
   ],
   providers: [],
   bootstrap: [],

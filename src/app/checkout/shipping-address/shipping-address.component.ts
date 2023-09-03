@@ -68,7 +68,6 @@ export class ShippingAddressComponent implements OnInit {
       a.push(ifCheckout);
       localStorage.setItem(ORDER_KEY + this.user?.id, JSON.stringify(a));
       this.router.navigate(['/profile']);
-
       this.toastrService.success('Successful Order', 'Success!');
     } else {
       this.toastrService.error(

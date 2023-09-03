@@ -21,9 +21,9 @@ export class ProductComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private toastrService: ToastrService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) {
     this.user = this.authService.userValue;
   }

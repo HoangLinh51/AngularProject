@@ -29,7 +29,7 @@
                       {{posts.body}}
                     </span><br>
                     <h5 class="text-center">
-                     Reactions: <nz-rate [ngModel]="posts.reactions" [nzCount]="10"  nzDisabled ></nz-rate>
+                      <nz-rate [ngModel]="posts.reactions * 0.5"  nzDisabled nzAllowHalf></nz-rate>
                     </h5>
                   </div>
                 </div>

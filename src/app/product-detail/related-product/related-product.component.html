@@ -8,10 +8,10 @@
         details</button>
     </div>
   </div>
-  <a [routerLink]="['/shop/', product.id]">
+  <div [routerLink]="['/shop/', product.id]" style="cursor: pointer">
     <h2>{{product.title}}</h2>
     <div class="product-carousel-price">
-      {{product.price | currency: 'USD'}}
+      <ins>{{product.price | currency: 'USD'}}</ins>
     </div>
-  </a>
+  </div>
 </div>

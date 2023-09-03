@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -22,6 +22,7 @@ import { ShopComponent } from './shop.component';
   ],
   providers: [],
   bootstrap: [],
+  schemas: [NO_ERRORS_SCHEMA],
   exports: [FormsModule],
 })
 export class ShopModule {}

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgOptimizedImage } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,6 +27,7 @@ import { ShippingAddressComponent } from './shipping-address/shipping-address.co
   ],
   providers: [],
   bootstrap: [],
+  schemas: [NO_ERRORS_SCHEMA],
   exports: [FormsModule],
 })
 export class CheckoutModeule {}

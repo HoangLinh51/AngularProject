@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 import { ORDER_KEY, USER_KEY } from 'src/helpers/localStorage';
 import { IUser } from '../model/auth.model';
 import { AuthService } from '../service/auth.service';
 import { Order } from '../model/product.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile-user',

@@ -1,14 +1,15 @@
-<div class="single-wid-product " style="cursor: pointer" [routerLink]="['/shop/', productco.id]">
-  <a><img [src]="productco.images[0]" width="90" alt="" class="product-thumb"></a>
-  <h2><a>{{productco.title}}</a></h2>
-  <div class="product-wid-rating">
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-  </div>
-  <div class="product-wid-price">
-    <ins>{{productco.price | currency: 'USD'}}</ins>
-  </div>
+<div class="single-wid-product " style="cursor: pointer" >
+  <a [routerLink]="['/shop/', productco.id]"><img [src]="productco.images[0]" width="90" alt="" class="product-thumb">
+    <h2>{{productco.title}}</h2>
+    <div class="product-wid-rating">
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+    </div>
+    <div class="product-carousel-price">
+      <ins>{{productco.price | currency: 'USD'}}</ins>
+    </div>
+  </a>
 </div>
